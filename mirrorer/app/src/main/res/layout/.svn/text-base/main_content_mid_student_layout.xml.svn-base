@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/home_head_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_white">
+
+        <TextView
+            android:id="@+id/home_commond_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="18dp"
+            android:text="推荐"
+            android:textColor="@color/app_dark_black"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/home_enter_arrow"
+            android:layout_width="13dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_enter_arrow_navigation"
+            android:scaleType="centerInside"
+            android:layout_marginTop="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            />
+
+        <TextView
+            android:id="@+id/home_heda_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/home_commond_tv"
+            android:background="@drawable/white_gray"
+            android:layout_toLeftOf="@id/home_enter_arrow"
+            android:text="更多"
+            android:textColor="@color/app_dark_black"
+            android:textSize="13dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_horizatal_listview"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:layout_below="@id/home_commond_tv"
+            android:background="@color/app_white"></android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/home_my_question_tv"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/home_head_layout"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="我的提问"
+        android:textColor="@color/app_dark_black"
+        android:textSize="16dp" />
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:id="@+id/home_question_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/home_my_question_tv"/>
+
+    <ImageView
+        android:id="@+id/home_voice_iv"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/home_voice_icon_bg" />
+
+</merge>

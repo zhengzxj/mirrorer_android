@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/app_black"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/record_cell_paly_iv"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/video_play_btn_bg"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:layout_below="@id/record_cell_paly_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="00:32:56"
+            android:textSize="15dp"
+            android:textColor="@color/app_white"/>
+        
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_gray_color"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="4dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/record_cell_image"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/app_default_head_icon" />
+
+        <TextView
+            android:id="@+id/record_cell_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016-02-19 19:30"
+            android:textSize="12dp"
+            android:textColor="@color/app_dark_black"
+            android:layout_toRightOf="@id/record_cell_image"
+            />
+
+        <TextView
+            android:id="@+id/record_cell_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peter"
+            android:textSize="12dp"
+            android:textColor="@color/app_low_black"
+            android:layout_toRightOf="@id/record_cell_image"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/record_cell_time_tv"
+            />
+
+
+        <TextView
+            android:id="@+id/record_cell_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="¥20"
+            android:textSize="12dp"
+            android:textColor="@color/app_dark_black"
+            />
+
+        <TextView
+            android:id="@+id/record_cell_statu_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="待评价"
+            android:textSize="12dp"
+            android:textColor="@color/tutor_price_title_color"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/record_cell_price_tv"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/app_base_bg_color"/>
+
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.smart.mirrorer.view.NavigationBar
+    android:id="@+id/navigation_bar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp">
+
+    <!-- left button container -->
+
+    <RelativeLayout
+        android:id="@+id/fl_navi_left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/fl_navi_left"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/btn_back"/>
+
+    </RelativeLayout>
+    <!-- middle view container -->
+
+    <FrameLayout
+        android:id="@+id/fl_navi_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        >
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_navi_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" >
+    </FrameLayout>
+
+</com.smart.mirrorer.view.NavigationBar>

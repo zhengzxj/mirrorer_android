@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/by">
+<TextView
+    android:id="@+id/tv_lingting"
+    android:textColor="@color/app_white"
+    android:textSize="20dp"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="220dp"
+    android:text="聆听中..."
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/voice_result_tv"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:maxLines="6"
+            android:textColor="@color/app_white"
+            android:textColorHint="@color/app_white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:gravity="top"
+            android:id="@+id/voice_result_edit"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:maxLines="6"
+            android:background="@null"
+            android:textColorHint="@color/app_white"
+            android:textColor="@color/app_white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/tv_zishu"
+            android:textColor="@color/app_white"
+            android:textSize="16dp"
+            android:gravity="right"
+            android:padding="16dp"
+            android:text="0/100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--<TextView-->
+            <!--android:id="@+id/voice_edit_tv"-->
+            <!--android:layout_width="86dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_gravity="right|bottom"-->
+            <!--android:layout_marginRight="4dp"-->
+            <!--android:layout_marginTop="22dp"-->
+            <!--android:background="@drawable/voice_edit_bg"-->
+            <!--android:gravity="center"-->
+            <!--android:text="点击编辑"-->
+            <!--android:textColor="@color/voice_edit_gray"-->
+            <!--android:textSize="15dp"-->
+            <!--android:visibility="invisible" />-->
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/voice_cancle_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="64dp"
+        android:layout_marginLeft="52dp"
+        android:src="@drawable/btn_cha" />
+
+    <ImageView
+        android:id="@+id/voice_finish_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="64dp"
+        android:layout_marginRight="52dp"
+        android:src="@drawable/btn_duihao"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/voice_wave_one"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/voice_replly" />
+
+    <ImageView
+        android:id="@+id/voice_wave_two"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/voice_replly" />
+
+    <ImageView
+        android:id="@+id/voice_wave_three"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/voice_replly" />
+
+    <ImageView
+        android:id="@+id/voice_layout_iv"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:scaleType="centerInside"
+        android:background="@drawable/btn_mai" />
+
+    <TextView
+        android:id="@+id/voice_pub_iv"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:background="@drawable/btn_fasong"
+        android:gravity="center"
+        android:textColor="@color/app_white"
+        android:textSize="20dp"
+        android:visibility="gone" />
+    <!--android:text="呼叫"-->
+    <!--<ProgressBar-->
+        <!--android:id="@+id/voice_progress"-->
+        <!--style="?android:attr/progressBarStyleHorizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="3dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginBottom="180dp" />-->
+
+</RelativeLayout>

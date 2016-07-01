@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="juslogin-">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/juslogin/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/juslogin/jars/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/juslogin/jars/libs/MiPush_SDK_Client_2_2_21.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

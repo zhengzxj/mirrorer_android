@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_bg_color">
+
+    <include layout="@layout/navigation_bar_layout" />
+
+    <ImageView
+        android:id="@+id/recommon_award_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/navigation_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/share_pic" />
+
+
+    <TextView
+        android:id="@+id/recommon_award_one_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recommon_award_iv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="送给朋友80礼包，您也将获得"
+        android:textColor="@color/app_black"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/recommon_award_two_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recommon_award_one_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="20元通用券奖励"
+        android:textColor="@color/app_black"
+        android:textSize="16dp" />
+
+
+    <TextView
+        android:id="@+id/recommon_award_share_tv"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/white_corner_btn_bg"
+        android:gravity="center"
+        android:text="分享到社交媒体"
+        android:textColor="@color/app_black"
+        android:textSize="15dp" />
+</RelativeLayout>

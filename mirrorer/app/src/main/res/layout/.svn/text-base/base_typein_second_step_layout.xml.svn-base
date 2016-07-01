@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_bg_color"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="2/4"
+        android:textColor="@color/app_black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/base_typein_second_back_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerInside"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:src="@drawable/ic_base_back" />
+
+    <ImageView
+        android:id="@+id/base_typein_second_next_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_base_next" />
+
+
+    <LinearLayout
+        android:id="@+id/base_typein_second_gender_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="45dp"
+            android:text="性别"
+            android:textColor="@color/app_base_4c"
+            android:textSize="18dp" />
+
+        <RadioGroup
+            android:id="@+id/base_second_randio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/base_second_radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_base_4c"
+                android:checked="true"
+                android:drawableLeft="@drawable/base_check_bg"
+                android:drawablePadding="15dp"
+                android:button="@null"
+                android:text="男"></RadioButton>
+
+            <RadioButton
+                android:id="@+id/base_second_radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:textColor="@color/app_base_4c"
+                android:drawablePadding="15dp"
+                android:button="@null"
+                android:drawableLeft="@drawable/base_check_bg"
+                android:text="女"></RadioButton>
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/base_typein_second_gender_layout"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="45dp"
+            android:text="出生年份"
+            android:textColor="@color/app_base_4c"
+            android:textSize="18dp" />
+
+        <com.smart.mirrorer.view.WheelView
+            android:id="@+id/base_typein_second_age_selview"
+            android:layout_width="152dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</RelativeLayout>

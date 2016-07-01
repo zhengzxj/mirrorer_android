@@ -1,0 +1,113 @@
+package com.smart.mirrorer.adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.smart.mirrorer.R;
+import com.smart.mirrorer.base.BaseApplication;
+import com.smart.mirrorer.bean.DBHistoryData;
+import com.videorecorder.util.Log;
+
+import java.util.List;
+
+/**
+ * Created by lzm on 16/3/25.
+ */
+public class HistoryListAdapter extends RecyclerView.Adapter {
+
+    private List<DBHistoryData> mListDatas;
+    private Context mContext;
+
+    public HistoryListAdapter(Context mContext)
+    {
+        this.mContext = mContext;
+    }
+
+    public void setListData(List<DBHistoryData> mListDatas) {
+        this.mListDatas = mListDatas;
+        Log.i("lzm","数据条数:"+mListDatas.size()+"条");
+        notifyDataSetChanged();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView id_video_history_item_desc;//问题描述
+        private TextView history_cell_time_tv;//录制时间点
+        private TextView history_cell_name_tv;//导师名字
+        private TextView history_cell_price_tv;//价格
+        private ImageView history_cell_image;//导师头像
+        private TextView id_video_history_item_time;//视频时长
+        private LinearLayout history_video_layout;//视频布局-用于点击播放视频
+
+
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            id_video_history_item_desc = (TextView) itemView.findViewById(R.id.id_video_history_item_desc);
+            history_cell_time_tv = (TextView) itemView.findViewById(R.id.history_cell_time_tv);
+            history_cell_name_tv = (TextView) itemView.findViewById(R.id.history_cell_name_tv);
+            history_cell_price_tv = (TextView) itemView.findViewById(R.id.id_video_history_item_price);
+            history_cell_image = (ImageView)itemView.findViewById(R.id.history_cell_image);
+            id_video_history_item_time = (TextView)itemView.findViewById(R.id.id_video_history_item_time);
+            history_video_layout = (LinearLayout)itemView.findViewById(R.id.history_video_layout);
+
+        }
+
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_list_history, null));
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (mListDatas == null || mListDatas.isEmpty()) {
+            return;
+        }
+
+        ViewHolder viewHolder = (ViewHolder) holder;
+        final DBHistoryData videos = mListDatas.get(position);
+        if(videos == null) {
+            return;
+        }
+
+        viewHolder.id_video_history_item_desc.setText(videos.questionDesc);
+        BaseApplication.mImageLoader.displayImage(videos.tutorHead,viewHolder.history_cell_image,BaseApplication.headOptions);
+        viewHolder.history_cell_name_tv.setText(videos.tutorNick);
+        viewHolder.history_cell_price_tv.setText("¥"+videos.price);
+//        Log.i("lzm","timeFormat = "+videos.timeFormat);
+        viewHolder.history_cell_time_tv.setText(videos.timeFormat);
+        viewHolder.id_video_history_item_time.setText(videos.time);
+        viewHolder.history_video_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//Environment.getExternalStorageDirectory()+"/"+
+                Uri uir = Uri.parse(videos.getVideoPath());
+                Log.i("lzm","click video play : uri = "+uir);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(uir, "video/mp4");
+                mContext.startActivity(intent);
+                Log.i("lzm","播放视频");
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        if (mListDatas == null || mListDatas.isEmpty()) {
+            return 0;
+        }
+        return mListDatas.size();
+    }
+}

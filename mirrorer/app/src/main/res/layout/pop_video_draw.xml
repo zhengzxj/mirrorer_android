@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="25dp"
+    android:layout_height="250dp"
+    android:orientation="vertical"
+    >
+    <!--互换本地和远程视频控件-->
+    <ImageView
+        android:id="@+id/ic_room_button_change"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
+        android:src="@drawable/btn_zhuanhuan"
+        android:gravity="center"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="35dp"
+        android:layout_height="15dp" />
+    <!--关闭本地视频流-->
+    <ImageView
+        android:id="@+id/iv_stop_local_video"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
+        android:src="@drawable/btn_se_bendishipin"
+        android:gravity="center"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="35dp"
+        android:layout_height="15dp" />
+    <!--关闭远程视频流-->
+    <ImageView
+        android:id="@+id/iv_stop_remote_stream"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
+        android:src="@drawable/btn_yuanchengshipin"
+        android:gravity="center"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="35dp"
+        android:layout_height="15dp" />
+    <!--麦克风-->
+    <ImageView
+        android:id="@+id/ic_microphone"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
+        android:src="@drawable/btn_yangshengqi"
+        android:gravity="center"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="35dp"
+        android:layout_height="15dp" />
+    <!--静音-->
+    <ImageView
+        android:id="@+id/ic_no_voice"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
+        android:src="@drawable/btn_se_make"
+        android:gravity="center"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="35dp"
+        android:layout_height="15dp" />
+</LinearLayout>

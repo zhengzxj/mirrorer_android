@@ -1,0 +1,20 @@
+package com.smart.mirrorer.setting;
+
+import android.os.Bundle;
+
+import com.smart.mirrorer.R;
+import com.smart.mirrorer.base.BaseTitleActivity;
+
+/**
+ * Created by lzm on 16/4/27.
+ */
+public class AboutActivity extends BaseTitleActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about_layout);
+        setupNavigationBar(R.id.navigation_bar);
+        setCommonTitle("关于瞬语");
+    }
+}

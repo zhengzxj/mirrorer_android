@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/white_gray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="78dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/question_content_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="一二三四一二三四一二三四一二三四一二三四一二三四一二三四一二三四一二三四一二三四一二三四一二三四一二三四一二三四一二三四"
+                android:ellipsize="end"
+                android:textColor="#6a6969"
+                android:paddingBottom="5dp"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="7dp"
+                android:id="@+id/question_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="05-06"
+                android:textStyle="bold"
+                android:gravity="left|center_vertical"
+                android:textColor="#a0a0a0"
+                android:textSize="12dp" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/question_video_icon"
+            android:layout_marginRight="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_hujiao"
+            android:gravity="center"
+            android:layout_marginLeft="14dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:text="再次提问"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#b8b8b8" />
+</LinearLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <include layout="@layout/navigation_bar_layout" />
+<View
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:background="#000000" />
+    <RelativeLayout
+        android:layout_marginTop="21dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/ll_suggestion"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="20dp"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_suggestion"
+                    android:src="@drawable/btn_duide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:paddingLeft="3dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="意见建议"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_bug"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:gravity="center"
+                android:paddingRight="20dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_bug"
+                    android:src="@drawable/btn_weixuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:paddingLeft="3dp"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BUG反馈"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <EditText
+
+        android:id="@+id/feedback_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/by_shqukuang"
+        android:layout_marginTop="28dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:padding="15dp"
+        android:textSize="12dp"
+        android:maxLength="250"
+        android:textColor="#000000"
+        android:textColorHint="#a0a0a0"
+        android:hint="请在此处填写您的意见建议或遇到的软件错误..."
+        />
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="不能超过250个字符"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:textColor="@color/app_low_black"-->
+        <!--android:textSize="12dp"-->
+        <!--android:layout_margin="10dp"-->
+        <!--/>-->
+    <TextView
+        android:id="@+id/tv_commit"
+        android:layout_marginTop="42dp"
+        android:text="提交"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_tijiao"/>
+</LinearLayout>

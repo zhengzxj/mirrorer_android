@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/cell_pay_guide_info"
+    android:layout_below="@+id/navigation_bar"
+    android:layout_height="105dp">
+    <TextView
+        android:id="@+id/tv_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/separate_line"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/recommon_like_cell_head_iv"
+        android:layout_width="55dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_height="55dp" />
+    <TextView
+        android:id="@+id/liked_nick_tv"
+        android:text="爱丽丝梦游仙境"
+        android:textStyle="bold"
+        android:layout_marginLeft="106dp"
+        android:layout_marginTop="18dp"
+        android:textSize="12.5sp"
+        android:textColor="#0b0a0a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/iv_xingxing"
+        android:layout_toRightOf="@+id/liked_nick_tv"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20.5dp"
+        android:src="@mipmap/icon_xingxing"
+        android:layout_marginLeft="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/recommon_like_cell_right_count_tv"
+        android:text="5.7"
+        android:gravity="center"
+        android:layout_marginTop="18dp"
+        android:textStyle="bold"
+        android:textSize="12.5sp"
+        android:textColor="#0b0a0a"
+        android:layout_toRightOf="@+id/iv_xingxing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="爱丽丝梦游仙境"
+        android:layout_marginLeft="106dp"
+        android:layout_marginTop="36.5dp"
+        android:textSize="13sp"
+        android:textColor="#313131"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/liked_company_tv" />
+    <TextView
+        android:text="爱丽丝梦游仙境"
+        android:layout_marginLeft="106dp"
+        android:layout_marginTop="55dp"
+        android:textSize="13sp"
+        android:textColor="#313131"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/liked_position_tv" />
+
+    <TextView
+        android:id="@+id/liked_start_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="首5分钟:$9999分"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="106dp"
+        android:textColor="#70d3aa"
+        android:textSize="12dp"
+        android:background="@drawable/shape_follow_tv"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="0.5dp"
+        android:paddingBottom="0.5dp"
+        android:text="5分钟后:$9999/分"
+        android:textColor="#70d3aa"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_toRightOf="@+id/liked_start_price_tv"
+        android:layout_marginLeft="9dp"
+        android:textSize="12dp"
+        android:background="@drawable/shape_follow_tv"
+        android:id="@+id/liked_minute_price_tv" />
+</RelativeLayout>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_white">
+
+    <RelativeLayout
+        android:id="@+id/navigation_head_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/title_line" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/navigation_head_iv"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/ic_default_head_navigation" />
+
+        <TextView
+            android:id="@+id/navigation_nick_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/navigation_head_iv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:text="用户名"
+            android:textColor="#313131"
+            android:textSize="16dp" />
+
+        <!--<ImageView-->
+        <!--android:layout_width="15dp"-->
+        <!--android:layout_height="28dp"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/ic_enter_arrow_navigation" />-->
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/navigation_history_item"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/navigation_head_rl"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/icon_lishijilu"-->
+        <!--android:layout_marginLeft="14dp"-->
+        <!--/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="历史"
+            android:textColor="#313131"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navigation_wallet_item"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/navigation_history_item"
+        android:gravity="center"
+        android:visibility="visible">
+
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/icon_qianbao"-->
+        <!--android:layout_marginLeft="14dp"-->
+        <!--/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="钱包"
+            android:textColor="#313131"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navigation_fankui_item"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/navigation_wallet_item"
+        android:gravity="center"
+        android:visibility="visible">
+
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/icon_fankui"-->
+        <!--android:layout_marginLeft="14dp"-->
+        <!--/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="反馈"
+            android:textColor="#313131"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/navigation_recommon_item"-->
+    <!--android:layout_below="@id/navigation_update_item"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:visibility="visible">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@drawable/icon_shezhi"-->
+    <!--android:layout_marginLeft="14dp"-->
+    <!--/>-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textSize="14dp"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:layout_marginLeft="19dp"-->
+    <!--android:text="版本更新"/>-->
+
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/navigation_setting_item"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/navigation_fankui_item"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/icon_shezhi"-->
+        <!--android:layout_marginLeft="14dp"-->
+        <!--/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:textColor="#313131"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/navigation_change_app_tv"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="切换回答者模式"
+        android:textColor="#2DBAD1"
+        android:textSize="14dp" />
+</RelativeLayout>

@@ -1,0 +1,85 @@
+10
+
+dir
+429
+svn://112.74.67.189:8001/android-client/Mirrorer/trunk/app/src/main/res
+svn://112.74.67.189:8001
+
+
+
+2016-05-28T05:21:42.503124Z
+429
+zhengzxj
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3c80badd-b18a-430b-8591-8e43294629e8
+
+anim
+dir
+
+color
+dir
+
+drawable
+dir
+
+drawable-hdpi
+dir
+
+drawable-xhdpi
+dir
+
+drawable-xxhdpi
+dir
+
+drawable-xxxhdpi
+dir
+
+layout
+dir
+
+menu
+dir
+
+mipmap-hdpi
+dir
+
+mipmap-mdpi
+dir
+
+mipmap-xhdpi
+dir
+
+mipmap-xxhdpi
+dir
+
+mipmap-xxxhdpi
+dir
+
+raw
+dir
+
+values
+dir
+
+values-v21
+dir
+
+values-w820dp
+dir
+
+xml
+dir
+

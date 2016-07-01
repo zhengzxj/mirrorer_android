@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="310dp"
+    android:layout_height="wrap_content"
+    >
+
+    <!--编辑头-->
+    <TextView
+        android:id="@+id/tv_bianji"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="编辑"
+        android:gravity="center_horizontal|bottom"
+        android:background="@drawable/shape_question_top_corner"
+        android:textColor="#4d4d4d"
+        android:textSize="16dp" />
+        <!--编辑头下面部分(主体)-高度包裹-->
+    <RelativeLayout
+        android:id="@+id/rl_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_question_bottom_corner"
+        android:layout_below="@+id/tv_bianji">
+        <!--文本框 高度140 包裹-->
+        <RelativeLayout
+            android:id="@+id/rl_et"
+            android:layout_width="290dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/by_wenzi">
+
+            <EditText
+                android:id="@+id/et_question_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:gravity="top"
+                android:textColor="#313131"
+                android:textSize="16sp" />
+            <TextView
+                android:visibility="invisible"
+                android:id="@+id/tv_question_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:textColor="#313131"
+                android:background="#00000000"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!--按钮部分 离底部20-->
+        <RelativeLayout
+            android:id="@+id/rl_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_et">
+
+            <TextView
+                android:id="@+id/tv_text_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:text="0/100"
+                android:textColor="#818181"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/tv_text_count"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/shape_question_btn_edit_cancle"
+                android:gravity="center"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp"
+                android:text="取消"
+                android:textColor="#313131" />
+
+            <TextView
+                android:id="@+id/tv_commit"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_text_count"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/shape_question_btn_edit_commite"
+                android:gravity="center"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp"
+                android:text="确认"
+                android:textColor="#313131" />
+        </RelativeLayout>
+        <View
+            android:layout_below="@+id/rl_btn"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

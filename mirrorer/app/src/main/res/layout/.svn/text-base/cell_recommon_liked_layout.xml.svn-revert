@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_gray"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/recommon_like_cell_head_iv"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/app_default_head_icon" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/recommon_like_cell_head_iv"
+        android:layout_marginTop="10dp"
+        android:background="@color/app_gray_color" />
+
+    <ImageView
+        android:id="@+id/recommon_like_cell_online_statu_iv"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_online"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/recommon_like_cell_job_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/recommon_like_cell_head_iv"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/liked_nick_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLength="4"
+            android:textColor="@color/app_black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/liked_company_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:maxLength="5"
+            android:textColor="@color/app_light_black"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/liked_position_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:maxLength="4"
+            android:textColor="@color/app_light_black"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recommon_like_cell_job_layout"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/recommon_like_cell_head_iv"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tutor_start_step_price"
+            android:textColor="@color/tutor_price_title_color"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/liked_start_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="¥10/5分钟"
+            android:textColor="@color/app_light_black"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/liked_minute_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="¥5/分钟"
+            android:textColor="@color/app_light_black"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/recommon_like_cell_right_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:text="5.0"
+        android:textColor="@color/tutor_star_count_color"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@id/recommon_like_cell_right_count_tv"
+        android:scaleType="centerInside"
+        android:src="@drawable/video_star_icon" />
+
+
+    <ImageView
+        android:id="@+id/recommon_like_cell_video_icon"
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/recommon_like_cell_right_count_tv"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/video_btn_bg" />
+</RelativeLayout>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/zhengfei/GitHub/mirrorer_android/mirrorer/ShareSDK/assets"><file name="armeabi/libwbsafeedit.so" path="/Users/zhengfei/GitHub/mirrorer_android/mirrorer/ShareSDK/assets/armeabi/libwbsafeedit.so"/></source></dataSet><dataSet config="debug"><source path="/Users/zhengfei/GitHub/mirrorer_android/mirrorer/ShareSDK/build-types/debug/assets"/></dataSet></merger>

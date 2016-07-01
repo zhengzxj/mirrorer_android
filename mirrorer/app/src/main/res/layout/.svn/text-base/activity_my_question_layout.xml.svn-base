@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/navigation_bar_layout" />
+
+    <TextView
+        android:id="@+id/q_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/my_question_content_bg"
+        android:lineSpacingExtra="6dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="6dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioGroup
+            android:id="@+id/question_tab_contain"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/app_white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" />
+
+        <FrameLayout
+            android:id="@+id/question_stub_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/question_tab_contain" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/app_gray_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <!--
+            <View
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:id="@+id/question_tab_left_line"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#ec322b" />
+
+-->
+            <View
+                android:layout_width="25dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:id="@+id/question_tab_mid_line"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#ec322b"
+                android:visibility="invisible" />
+
+            <View
+                android:layout_width="25dp"
+                android:layout_height="wrap_content" />
+<!--
+            <View
+                android:id="@+id/question_tab_right_line"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#ec322b"
+                android:visibility="invisible" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
+-->
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

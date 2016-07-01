@@ -1,0 +1,81 @@
+package com.smart.mirrorer.bean.home;
+
+/**
+ * Created by lzm on 16/4/30.
+ */
+public class CommonTutorItemData {
+
+    private float star;
+    private String uid;
+    private String title;
+    private float startPrice;
+    private String company;
+    private float minutePrice;
+    private String headImgUrl;
+    private String nickName;
+
+    public float getStar() {
+        return star;
+    }
+
+    public void setStar(float star) {
+        this.star = star;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public float getStartPrice() {
+        return startPrice;
+    }
+
+    public void setStartPrice(float startPrice) {
+        this.startPrice = startPrice;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public float getMinutePrice() {
+        return minutePrice;
+    }
+
+    public void setMinutePrice(float minutePrice) {
+        this.minutePrice = minutePrice;
+    }
+
+    public String getHeadImgUrl() {
+        return headImgUrl;
+    }
+
+    public void setHeadImgUrl(String headImgUrl) {
+        this.headImgUrl = headImgUrl;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+}

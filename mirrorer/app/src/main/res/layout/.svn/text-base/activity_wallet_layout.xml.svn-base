@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_bg_color">
+
+    <include layout="@layout/navigation_bar_layout" />
+
+    <com.smart.mirrorer.view.UIItem
+        android:id="@+id/wallet_yue_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_white"
+        android:layout_marginTop="10dp"
+        app:drawBottomDivider="true"
+        app:drawTopDivider="true"
+        app:leftText="余额" />
+
+</LinearLayout>

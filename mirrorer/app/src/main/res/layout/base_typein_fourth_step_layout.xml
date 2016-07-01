@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_bg_color"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="4/4"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/app_black" />
+
+    <ImageView
+        android:id="@+id/base_typein_fourth_back_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_app_back" />
+
+    <ImageView
+        android:id="@+id/base_typein_fourth_next_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_base_next" />
+
+    <GridView
+        android:id="@+id/base_fourth_sel_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="3"
+        android:verticalSpacing="20dp"
+        android:scrollbars="none"/>
+
+
+    <TextView
+        android:id="@+id/base_fourth_desc_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/base_fourth_sel_gridview"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/app_base_4c"
+        android:text="感兴趣的行业"/>
+
+    <GridView
+        android:id="@+id/base_fourth_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_below="@id/base_fourth_desc_tv"
+        android:layout_marginTop="50dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="3"
+        android:verticalSpacing="20dp"
+        android:scrollbars="none"/>
+
+    <LinearLayout
+        android:id="@+id/base_fourth_change_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/base_fourth_gridview"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_base_change"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="换一组"
+            android:textSize="15dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#9e9e9e"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

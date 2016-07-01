@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_info_bg_color"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/btn_back"
+        android:padding="14dp"
+        android:id="@+id/iv_third_back" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="88dp"
+        android:textSize="18sp"
+        android:text="上次工作经历"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:hint="公司"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:background="@null"
+        android:id="@+id/et_company" />
+    <TextView
+        android:layout_width="220dp"
+        android:background="@color/light_gray"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="202dp"
+        android:layout_height="1dp" />
+    <EditText
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:hint="职位"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="220dp"
+        android:background="@null"
+        android:id="@+id/et_position" />
+    <TextView
+        android:layout_width="220dp"
+        android:background="@color/light_gray"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="242dp"
+        android:layout_height="1dp" />
+    <EditText
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:hint="开始年份"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="260dp"
+        android:background="@null"
+        android:numeric="integer"
+        android:id="@+id/et_start_year" />
+    <TextView
+        android:layout_width="220dp"
+        android:background="@color/light_gray"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="282dp"
+        android:layout_height="1dp" />
+    <EditText
+        android:layout_width="220dp"
+        android:numeric="integer"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:hint="结束年份"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="300dp"
+        android:background="@null"
+        android:id="@+id/et_end_year" />
+    <TextView
+        android:layout_width="220dp"
+        android:background="@color/light_gray"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="322dp"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:text="下一步"
+        android:clickable="true"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="110dp"
+        android:background="@mipmap/btn_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_third_next" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:text="申请成为回答者  3/5"-->
+        <!--android:textColor="@color/app_black"-->
+        <!--android:textSize="18dp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/tutor_typein_third_back_iv"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginTop="21dp"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingRight="15dp"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/ic_app_back" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/tutor_typein_third_next_iv"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/ic_base_next" />-->
+
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_below="@id/tutor_typein_third_next_iv"-->
+            <!--android:layout_marginTop="25dp">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tutor_third_job_title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="工作经历"-->
+                <!--android:textSize="18dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--android:textColor="@color/app_base_4c"-->
+                <!--android:layout_marginLeft="18dp"-->
+                <!--/>-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/tutor_third_job_add_iv"-->
+                <!--android:layout_width="23dp"-->
+                <!--android:layout_height="23dp"-->
+                <!--android:src="@drawable/ic_add_bg"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignTop="@id/tutor_third_job_title"-->
+                <!--android:layout_marginRight="14dp"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/tutor_third_wheel_layout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/tutor_third_job_title"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginLeft="18dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_height="wrap_content">-->
+                    <!--<com.smart.mirrorer.view.WheelView-->
+                        <!--android:id="@+id/tutor_third_start_selview"-->
+                        <!--android:layout_width="150dp"-->
+                        <!--android:layout_height="35dp"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="至"-->
+                        <!--android:textSize="18dp"-->
+                        <!--android:layout_margin="10dp"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textColor="@color/app_base_4c"-->
+                        <!--/>-->
+
+                    <!--<com.smart.mirrorer.view.WheelView-->
+                        <!--android:id="@+id/tutor_third_end_selview"-->
+                        <!--android:layout_width="150dp"-->
+                        <!--android:layout_height="35dp"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/tutor_third_job_edit"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/app_base_info_bg_color"-->
+                    <!--android:hint="职位"-->
+                    <!--android:textColor="#4c4c4c"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:layout_marginTop="38dp"-->
+                    <!--android:textColorHint="#cdcdcd"-->
+                    <!--android:textSize="16dp" />-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:background="#7d7d7d" />-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="30dp"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/tutor_third_company_edit"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="@color/app_base_info_bg_color"-->
+                        <!--android:hint="公司"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:textColor="#4c4c4c"-->
+                        <!--android:textColorHint="#cdcdcd"-->
+                        <!--android:textSize="16dp" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:background="#7d7d7d" />-->
+
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/tutor_third_addjob_listview"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginTop="30dp"-->
+                <!--android:layout_below="@id/tutor_third_wheel_layout" />-->
+
+        <!--</RelativeLayout>-->
+
+</RelativeLayout>

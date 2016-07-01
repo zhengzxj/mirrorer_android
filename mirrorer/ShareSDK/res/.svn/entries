@@ -1,0 +1,55 @@
+10
+
+dir
+382
+svn://112.74.67.189:8001/android-client/Mirrorer/trunk/ShareSDK/res
+svn://112.74.67.189:8001
+
+
+
+2016-05-16T03:48:22.671686Z
+279
+lizhiming
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3c80badd-b18a-430b-8591-8e43294629e8
+
+armeabi
+dir
+
+drawable
+dir
+
+drawable-hdpi
+dir
+
+drawable-ldpi
+dir
+
+drawable-mdpi
+dir
+
+drawable-xhdpi
+dir
+
+drawable-xxhdpi
+dir
+
+layout
+dir
+
+values
+dir
+

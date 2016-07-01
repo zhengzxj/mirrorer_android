@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_title_bg_color"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/forget_close_iv"
+        android:layout_width="35dp"
+        android:layout_height="20dp"
+        android:layout_margin="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_app_close" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/login_top_bg">
+
+            <EditText
+                android:id="@+id/forger_phone_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:textColor="@color/app_dark_black"
+                android:textColorHint="#d1d1d1"
+                android:hint="@string/phone_num_text"
+                android:numeric="integer"
+                android:padding="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/login_bottom_bg">
+
+            <RelativeLayout
+                android:id="@+id/forget_volid_get_layout"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/forget_volid_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:textColor="#ed504b"
+                    android:text="@string/volid_code_get_text"
+                    android:textSize="14dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:background="#c1c1c1" />
+
+            </RelativeLayout>
+
+
+            <EditText
+                android:id="@+id/forget_volid_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/forget_volid_get_layout"
+                android:background="@null"
+                android:textColor="@color/app_dark_black"
+                android:textColorHint="#d1d1d1"
+                android:hint="@string/volid_code_text"
+                android:numeric="integer"
+                android:padding="10dp" />
+
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/forget_next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/login_register_btn_bg"
+            android:gravity="center"
+            android:text="@string/app_next_text"
+            android:textColor="@color/app_white"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</LinearLayout>

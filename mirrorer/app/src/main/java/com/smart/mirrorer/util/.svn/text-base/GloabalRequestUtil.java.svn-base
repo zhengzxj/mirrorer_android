@@ -1,0 +1,151 @@
+package com.smart.mirrorer.util;
+
+import android.text.TextUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * Created by lzm on 16/3/26.
+ */
+public class GloabalRequestUtil {
+
+    /**
+     * 判断当次请求是否成功
+     *
+     * @param obj
+     * @return
+     */
+    public static boolean isRequestOk(JSONObject obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        int responseStatus = obj.optInt("status");
+        if (responseStatus == 10000) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isRequestOk(String jsonText) {
+        try {
+            JSONObject obj = new JSONObject(jsonText);
+            if (obj == null) {
+                return false;
+            }
+
+            int responseStatus = obj.optInt("status");
+            if (responseStatus == 10000) {
+                return true;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * 解析抢单是否过期
+     * @param obj
+     * @return
+     */
+    public static boolean isPastDate(JSONObject obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        JSONObject resObj = obj.optJSONObject("result");
+        if(resObj == null) {
+            return false;
+        }
+
+        int liveTag = resObj.optInt("live_to_time");
+        if (liveTag == 1) {
+            return false;
+        } else if(liveTag == 0) { //过期
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 获取余额
+     * @param obj
+     * @return
+     */
+    public static String getBanlance(JSONObject obj) {
+        if (obj == null) {
+            return "";
+        }
+
+        JSONObject resObj = obj.optJSONObject("result");
+        if(resObj == null) {
+            return "";
+        }
+        double amount = resObj.optDouble("real_amount");
+
+        return amount+"";
+    }
+
+    public static String getNetErrorMsg(JSONObject obj) {
+        if (obj == null) {
+            return "请求失败";
+        }
+
+        String errorMsg = obj.optString("result");
+        if (TextUtils.isEmpty(errorMsg)) {
+            return "请求失败";
+        }
+
+        return errorMsg;
+    }
+
+    /**
+     * 获取qid
+     * @param obj
+     * @return
+     */
+    public static String getQId(JSONObject obj) {
+        if (obj == null) {
+            return "";
+        }
+
+        JSONObject qidObj = obj.optJSONObject("result");
+        if (qidObj == null) {
+            return "";
+        }
+
+        String qid = qidObj.optString("qid");
+
+        if (TextUtils.isEmpty(qid)) {
+            return "";
+        }
+
+        return qid;
+    }
+
+    /**
+     * 获取orderId
+     * @param obj
+     * @return
+     */
+    public static String parseOrderId(JSONObject obj) {
+        if (obj == null) {
+            return "";
+        }
+
+        JSONObject qidObj = obj.optJSONObject("result");
+        if (qidObj == null) {
+            return "";
+        }
+
+        String orderid = qidObj.optString("orderId");
+
+        if (TextUtils.isEmpty(orderid)) {
+            return "";
+        }
+
+        return orderid;
+    }
+}

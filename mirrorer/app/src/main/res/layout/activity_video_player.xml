@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_black">
+
+    <FrameLayout
+        style="@style/w_w"
+        android:layout_centerInParent="true" >
+
+        <SurfaceView
+            android:id="@+id/sv_video_player"
+            style="@style/w_w" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/iv_video"
+        style="@style/w_w"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/rl_bottom_overlay"
+        style="@style/m_w"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <RelativeLayout
+            android:id="@+id/progress_overlay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/interface_overlay"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <com.videorecorder.TimeProgressBar
+                android:id="@+id/player_overlay_seekbar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_play" />
+    </LinearLayout>
+
+    <include layout="@layout/navigation_bar_layout" />
+
+</RelativeLayout>

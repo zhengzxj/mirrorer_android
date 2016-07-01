@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/app_base_bg_color">
+
+    <include layout="@layout/navigation_bar_layout" />
+
+    <com.smart.mirrorer.view.UIItem
+        android:id="@+id/setting_suggestion_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/navigation_bar"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/white_gray"
+        app:drawBottomDivider="false"
+        app:drawTopDivider="true"
+        app:leftText="给瞬语提点意见" />
+
+    <com.smart.mirrorer.view.UIItem
+        android:id="@+id/setting_about_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_suggestion_item"
+        android:background="@drawable/white_gray"
+        app:drawBottomDivider="false"
+        app:drawTopDivider="true"
+        app:leftText="关于我们" />
+
+    <com.smart.mirrorer.view.UIItem
+        android:id="@+id/setting_clear_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_about_item"
+        android:background="@drawable/white_gray"
+        app:drawBottomDivider="true"
+        app:drawTopDivider="true"
+        app:leftText="清除缓存" />
+
+    <RelativeLayout
+        android:id="@+id/setting_logout_item"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/white_gray"
+        android:layout_marginBottom="80dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退出登录"
+            android:layout_centerInParent="true"
+            android:textSize="15dp"
+            android:textColor="@color/app_black"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/app_gray_color"
+            android:layout_alignParentTop="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/app_gray_color"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+</RelativeLayout>

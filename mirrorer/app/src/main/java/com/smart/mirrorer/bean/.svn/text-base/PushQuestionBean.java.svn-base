@@ -1,0 +1,110 @@
+package com.smart.mirrorer.bean;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+/**
+ * Created by lzm on 16/4/21.
+ * 导师端接收的推送匹配问题
+ */
+public class PushQuestionBean implements Parcelable {
+
+    private String qid;
+    private String action;
+    private String source;
+    private String content;
+    private int type;
+    private long ts; //时间戳
+
+    public boolean isEnable;
+    public boolean isFollowed;
+
+    public String getQid() {
+        return qid;
+    }
+
+    public void setQid(String qid) {
+        this.qid = qid;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public long getTs() {
+        return ts;
+    }
+
+    public void setTs(long ts) {
+        this.ts = ts;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.qid);
+        dest.writeString(this.action);
+        dest.writeString(this.source);
+        dest.writeString(this.content);
+        dest.writeInt(this.type);
+        dest.writeLong(this.ts);
+        dest.writeByte(isEnable ? (byte) 1 : (byte) 0);
+        dest.writeByte(isFollowed ? (byte) 1 : (byte) 0);
+    }
+
+    public PushQuestionBean() {
+    }
+
+    protected PushQuestionBean(Parcel in) {
+        this.qid = in.readString();
+        this.action = in.readString();
+        this.source = in.readString();
+        this.content = in.readString();
+        this.type = in.readInt();
+        this.ts = in.readLong();
+        this.isEnable = in.readByte() != 0;
+        this.isFollowed = in.readByte() != 0;
+    }
+
+    public static final Parcelable.Creator<PushQuestionBean> CREATOR = new Parcelable.Creator<PushQuestionBean>() {
+        public PushQuestionBean createFromParcel(Parcel source) {
+            return new PushQuestionBean(source);
+        }
+
+        public PushQuestionBean[] newArray(int size) {
+            return new PushQuestionBean[size];
+        }
+    };
+}

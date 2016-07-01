@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<TextView -->
+        <!--android:background="#0000ff"-->
+        <!--android:layout_width="360dp"-->
+        <!--android:layout_height="640dp"/>-->
+    <!--全高度-48-->
+    <RelativeLayout
+
+        android:id="@+id/home_head_layout"
+        android:layout_width="match_parent"
+        android:layout_height="29dp">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/home_commond_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:text="推荐回答者"
+            android:textStyle="bold"
+            android:textColor="#313131"
+            android:textSize="15dp" />
+        <LinearLayout
+            android:id="@+id/home_heda_more"
+            android:layout_alignParentRight="true"
+            android:paddingRight="14dp"
+            android:paddingLeft="14dp"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="更多"
+                android:paddingRight="2dp"
+                android:textColor="#6a6a6a"
+                android:textSize="13dp" />
+            <ImageView
+                android:id="@+id/home_enter_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_gengduo"
+                />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/home_horizatal_listview"
+        android:layout_width="match_parent"
+        android:layout_height="113dp"
+        android:layout_below="@id/home_head_layout"
+        android:background="@color/app_white"></android.support.v7.widget.RecyclerView>
+    <TextView
+        android:id="@+id/home_my_question_tv"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_below="@id/home_horizatal_listview"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:text="我的提问"
+        android:textColor="#313131"
+        android:textSize="13dp" />
+
+    <LinearLayout
+        android:layout_height="29dp"
+        android:layout_below="@id/home_horizatal_listview"
+        android:id="@+id/home_question_more"
+        android:layout_alignParentRight="true"
+        android:paddingRight="14dp"
+        android:paddingLeft="14dp"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="更多"
+            android:paddingRight="2dp"
+            android:textColor="#6a6a6a"
+            android:textSize="13dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_gengduo"
+            />
+    </LinearLayout>
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:id="@+id/home_question_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/home_my_question_tv"/>
+
+    <ImageView
+        android:id="@+id/home_voice_iv"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/btn_maike_main" />
+
+</merge>

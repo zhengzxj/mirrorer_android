@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_base_title_bg_color">#f8f8f8</color>
+    <color name="app_base_bg_color">#f1f1f1</color>
+    <color name="app_base_info_bg_color">#f7f7f7</color>
+    <color name="app_gray2">#f2f2f2</color>
+    <color name="app_white">#ffffff</color>
+    <color name="app_black">#000000</color>
+
+    <color name="progress_end_color">#4fb4e9</color>
+
+    <color name="app_red">#FF0000</color>
+    <color name="app_dark_black">#1e1e1e</color>
+    <color name="app_light_black">#666666</color>
+    <color name="app_low_black">#828282</color>
+    <color name="register_color">#bf3eff</color>
+    <color name="voice_edit_gray">#cecece</color>
+    <color name="app_gray_color">#dddddd</color>
+
+    <color name="app_base_4c">#4c4c4c</color>
+    <color name="app_base_cd">#cdcdcd</color>
+
+    <color name="tutor_price_title_color">#0f7ae8</color>
+    <color name="tutor_star_count_color">#ffba00</color>
+
+    <color name="actionsheet_color">#4fb4e9</color>
+    <color name="actionsheet_cancel_color">#666666</color>
+
+    <color name="blue_for_camera_text">#2a90e2</color>
+    <color name="gray_item_text_n">#a9a9a9</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="light_gray">#55000000</color>
+    <color name="red">#ff0000</color>
+
+    <!--点击textView字体颜色-->
+    <color name="tv_down">#000000</color>
+    <color name="tv_up">#6E7B8B</color>
+    <!--分割线-->
+    <color name="separate_line">#B8B8B8</color>
+    <color name="title_line">#313131</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="gray">#cccccc</color>
+
+    <color name="drop_down_selected">#7B1FA2</color>
+    <color name="drop_down_unselected">#111111</color>
+
+    <color name="mask_color">#88888888</color>
+    <color name="check_bg">#f2f2f2</color>
+    <color name="un_press_color">#9C27B0</color>
+
+</resources>

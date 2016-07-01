@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/auth_info_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="TextView" />
+
+    <LinearLayout
+        android:id="@+id/auth_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/auth_info_text"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/auth_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q Q 授权" />
+
+        <Button
+            android:id="@+id/auth_wechat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="微信授权" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/auth_layout"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择分享平台" />
+
+        <Button
+            android:id="@+id/share_to_QQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享到QQ" />
+
+        <Button
+            android:id="@+id/share_to_QZone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享到QQ空间" />
+
+        <Button
+            android:id="@+id/share_to_wechat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享到微信好友" />
+
+        <Button
+            android:id="@+id/share_to_wechat_timeline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享到微信 朋友圈" />
+
+    </LinearLayout>
+
+</RelativeLayout>

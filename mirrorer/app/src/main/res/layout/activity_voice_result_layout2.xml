@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/by"
+    android:layout_height="match_parent">
+    <!--0标题tv-->
+    <TextView
+        android:gravity="center"
+        android:textSize="16sp"
+        android:id="@+id/tv_voice_result_title"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:padding="8dp"
+        android:textColor="#ffffff"
+        />
+    <!--android:text="等待回答者接单"-->
+    <!--1.回答者-->
+    <LinearLayout
+        android:layout_marginTop="51dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--1.1第一个回答者-->
+        <RelativeLayout
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:background="#80000000"
+            android:id="@+id/video_first"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+                <LinearLayout
+                    android:id="@+id/video_first_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <!--头像-->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/video_first_head_iv"
+                        android:layout_width="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/sonny" />
+                    <!--回答者资料-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tutor_first_nick_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:text="1111111"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:orientation="horizontal"
+                            android:id="@+id/aa">
+
+                            <TextView
+                                android:id="@+id/tutor_first_company_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="222222"
+                                android:textColor="#ffffff"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:text="333333"
+                                android:textColor="#ffffff"
+                                android:id="@+id/tutor_first_title_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/video_star_icon" />
+
+                            <TextView
+                                android:text="10.0"
+                                android:id="@+id/tutor_first_count_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:textColor="@color/tutor_star_count_color"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tutor_start_step_price"
+                                android:textColor="@color/tutor_price_title_color"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:text="55555"
+                                android:id="@+id/tutor_first_five_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/shape_follow_tv"
+                                android:paddingLeft="2dp"
+                                android:paddingRight="2dp"
+                                android:textColor="#70d3aa"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:text="666666"
+                                android:background="@drawable/shape_follow_tv"
+                                android:paddingLeft="2dp"
+                                android:paddingRight="2dp"
+                                android:textColor="#70d3aa"
+                                android:id="@+id/tutor_first_minute_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                        <ImageView
+                            android:id="@+id/iv_click_more_info_first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="7dp"
+                            android:src="@drawable/arrow_down"
+                            android:layout_gravity="center_horizontal"
+                            android:visibility="gone"
+                            />
+                    </LinearLayout>
+                    <!--通话按钮-->
+                    <TextView
+                        android:id="@+id/video_first_connect_bottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="立即接通"
+                        android:background="@drawable/btn_hujiao2"
+                        android:layout_margin="5dp"
+                        android:gravity="center"
+                        android:clickable="true"
+                        />
+                </LinearLayout>
+            <TextView
+                android:layout_below="@+id/video_first_rl"
+                android:id="@+id/tv_tutor_desc_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/shape_video_tutor_info"
+                android:text="我是老师老师的肌肤阿拉斯阿拉斯加地方阿拉斯加地方了啊手机地方啊手机地方啦时间"
+                android:visibility="gone"
+                />
+
+        </RelativeLayout>
+        <!--1.2第二个回答者-->
+        <RelativeLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:background="#80000000"
+            android:id="@+id/video_second"
+            android:visibility="gone">
+            <LinearLayout
+                android:id="@+id/video_second_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <!--头像-->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/video_second_head_iv"
+                    android:layout_width="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/sonny" />
+                <!--回答者资料-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tutor_second_nick_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="1111111"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/cc">
+
+                        <TextView
+                            android:id="@+id/tutor_second_company_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="222222"
+                            android:textColor="#ffffff"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:text="333333"
+                            android:textColor="#ffffff"
+                            android:id="@+id/tutor_second_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/video_star_icon" />
+
+                        <TextView
+                            android:text="10.0"
+                            android:id="@+id/tutor_second_count_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/tutor_star_count_color"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tutor_start_step_price"
+                            android:textColor="@color/tutor_price_title_color"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:text="55555"
+                            android:background="@drawable/shape_follow_tv"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:textColor="#70d3aa"
+                            android:id="@+id/tutor_second_five_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:text="666666"
+                            android:background="@drawable/shape_follow_tv"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:textColor="#70d3aa"
+                            android:id="@+id/tutor_second_minute_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv_click_more_info_second"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="7dp"-->
+                        <!--android:src="@drawable/arrow_down"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--/>-->
+                </LinearLayout>
+                <!--通话按钮-->
+                <TextView
+                    android:id="@+id/video_second_connect_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="立即接通"
+                    android:background="@drawable/btn_hujiao2"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:clickable="true"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:layout_below="@+id/video_second_rl"
+                android:id="@+id/tv_tutor_desc_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/shape_video_tutor_info"
+                android:text=""
+            android:visibility="gone"
+            />
+
+        </RelativeLayout>
+        <!--1.3第三个回答者-->
+        <RelativeLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:background="#80000000"
+            android:id="@+id/video_third"
+            android:visibility="gone">
+            <LinearLayout
+                android:id="@+id/video_third_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <!--头像-->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/video_third_head_iv"
+                    android:layout_width="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/sonny" />
+                <!--回答者资料-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tutor_third_nick_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="1111111"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/bb">
+
+                        <TextView
+                            android:id="@+id/tutor_third_company_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="222222"
+                            android:textColor="#ffffff"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:text="333333"
+                            android:textColor="#ffffff"
+                            android:id="@+id/tutor_third_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="30dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/video_star_icon" />
+
+                        <TextView
+                            android:text="10.0"
+                            android:id="@+id/tutor_third_count_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/tutor_star_count_color"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tutor_start_step_price"
+                            android:textColor="@color/tutor_price_title_color"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:text="55555"
+                            android:background="@drawable/shape_follow_tv"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:textColor="#70d3aa"
+                            android:id="@+id/tutor_third_five_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:text="666666"
+                            android:background="@drawable/shape_follow_tv"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:textColor="#70d3aa"
+                            android:id="@+id/tutor_third_minute_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv_click_more_info_third"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:paddingTop="5dp"-->
+                        <!--android:paddingBottom="5dp"-->
+                        <!--android:paddingLeft="30dp"-->
+                        <!--android:paddingRight="30dp"-->
+                        <!--android:src="@drawable/arrow_down"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--/>-->
+                </LinearLayout>
+                <!--通话按钮-->
+                <TextView
+                    android:id="@+id/video_third_connect_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="立即接通"
+                    android:background="@drawable/btn_hujiao2"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:clickable="true"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:layout_below="@+id/video_third_rl"
+                android:id="@+id/tv_tutor_desc_third"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/shape_video_tutor_info"
+                android:text=""
+            android:visibility="gone"
+            />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!--2.倒计时对话款-->
+    <LinearLayout
+        android:id="@+id/voice_video_progressbar_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="85dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp">
+
+            <ProgressBar
+                style="@android:style/Widget.ProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:indeterminate="false"
+                android:indeterminateDrawable="@drawable/progress_tutor_time_down2" />
+
+            <TextView
+                android:id="@+id/video_match_timer_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_match_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="正在等待回答者接单，请稍后..."
+            android:textColor="@color/app_white" />
+    </LinearLayout>
+
+    <!--取消按钮-->
+    <ImageView
+        android:id="@+id/voice_video_cancle_iv"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/btn_cha" />
+</RelativeLayout>

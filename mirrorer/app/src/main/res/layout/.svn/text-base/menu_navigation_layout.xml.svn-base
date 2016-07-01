@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/navigation_head_rl"
+        android:layout_width="match_parent"
+        android:background="@drawable/white_gray"
+        android:layout_height="60dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/navigation_head_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_default_head_navigation"
+            app:civ_border_color="@color/app_white"
+            app:civ_border_width="1dp" />
+
+        <TextView
+            android:id="@+id/navigation_nick_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/navigation_head_iv"
+            android:textColor="@color/app_dark_black"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_enter_arrow_navigation" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_gray_color"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/navigation_wallet_item"
+        android:layout_width="match_parent"
+        android:layout_below="@id/navigation_head_rl"
+        android:background="@drawable/white_gray"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_wallet_navigation"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/app_dark_black"
+            android:layout_marginLeft="25dp"
+            android:text="@string/navigation_wallet_text"/>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navigation_history_item"
+        android:layout_width="match_parent"
+        android:layout_below="@id/navigation_wallet_item"
+        android:background="@drawable/white_gray"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_history_navigation"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/app_dark_black"
+            android:layout_marginLeft="25dp"
+            android:text="@string/navigation_history_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navigation_update_item"
+        android:layout_width="match_parent"
+        android:layout_below="@id/navigation_history_item"
+        android:background="@drawable/white_gray"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_history_navigation"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/app_dark_black"
+            android:layout_marginLeft="25dp"
+            android:text="@string/navigation_update_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navigation_recommon_item"
+        android:layout_width="match_parent"
+        android:layout_below="@id/navigation_update_item"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/white_gray"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_recommond_navigation"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/app_dark_black"
+            android:layout_marginLeft="25dp"
+            android:text="@string/navigation_commend_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navigation_setting_item"
+        android:layout_width="match_parent"
+        android:layout_below="@id/navigation_recommon_item"
+        android:layout_height="60dp"
+        android:background="@drawable/white_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_settings_navigation"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/app_dark_black"
+            android:layout_marginLeft="25dp"
+            android:text="@string/navigation_settings_text"/>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/navigation_change_app_rl"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/white_gray">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/app_gray_color" />
+
+        <TextView
+            android:id="@+id/navigation_change_app_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="切换回答者模式"
+            android:textColor="@color/app_dark_black"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+</merge>

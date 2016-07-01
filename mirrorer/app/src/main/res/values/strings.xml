@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">瞬语</string>
+    <string name="action_settings">Settings</string>
+    <!-- 讯飞语音 -->
+    <string name="ifk_voice_key">56f757ff</string>
+    <string name="justalk_app_key">ec2d1b50e408706ea8544096</string>
+    <string name="MiPush_AppId">2882303761517458093</string>
+    <string name="MiPush_AppKey">5321745898093</string>
+
+    <string name="phone_num_text">手机号码</string>
+    <string name="password_text">用户密码</string>
+    <string name="login_text">登录</string>
+    <string name="forget_psw_text">忘记密码?</string>
+    <string name="register_text">注册</string>
+    <string name="app_next_text">下一步</string>
+    <string name="volid_code_text">验证码</string>
+    <string name="volid_code_get_text">发送验证码</string>
+    <string name="verifynumTime">(%ss)秒后可接收新验证码</string>
+    <string name="input_new_psw_text">输入新密码</string>
+    <string name="input_new_psw_agin_text">再次输入新密码</string>
+    <string name="app_finish_text">完成</string>
+
+    <string name="downloading">正在加载…</string>
+
+    <string name="tutor_start_step_price">起步价</string>
+    <string name="tutor_five_minute_price">¥%s/5分钟</string>
+    <string name="tutor_minute_price">¥%s/分钟</string>
+
+    <string name="single_price_text">¥%s</string>
+    <string name="call_time_text">通话时长: %s</string>
+
+    <string name="file_common_count_text">用户评价（%s)</string>
+
+    <string name="my_follow_text">我的关注</string>
+
+    <string name="app_senconds_text">%ss</string>
+
+    <string name="tutor_receiver_count_text">接单：%s</string>
+    <string name="tutor_sale_money_text">流水：%s元</string>
+    <string name="tutor_call_time_text">通话：%s</string>
+
+    <string name="navigation_wallet_text">我的钱包</string>
+    <string name="navigation_history_text">历史记录</string>
+    <string name="navigation_guanzhu_text">我的关注</string>
+    <string name="navigation_update_text">版本更新</string>
+    <string name="navigation_commend_text">推荐有奖</string>
+    <string name="navigation_settings_text">设置</string>
+    <string name="confirm">确定</string>
+
+    <string name="rec_time">录制时间%1$s</string>
+    <string name="camera_forbidden_prompt">摄像头无法启用，请到系统权限管理或者360安全卫士等管理软件中开启相机权限！</string>
+    <string name="camera_version_msg">您的版本过低,默认只能使用后置照相机</string>
+
+    <string name="voice_forbidden_prompt">录音权限可能被禁用了，请到系统权限管理或者360安全卫士等管理软件中开启相关权限！</string>
+    <string name="media_unmounted_msg">你的储存卡异常,请检查后重试</string>
+    <string name="title_activity_video_play">VideoPlayActivity</string>
+
+    <!--提示-->
+    <string name="phone_num_notice">请输入正确的11位手机号码</string>
+</resources>

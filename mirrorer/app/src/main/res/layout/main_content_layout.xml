@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/main_content_mid_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/main_content_mid_student_layout" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_content_mid_root_tutor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <include layout="@layout/main_content_mid_tutor_layout" />
+
+    </RelativeLayout>
+</merge>

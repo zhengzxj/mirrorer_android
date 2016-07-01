@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_info_bg_color"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/btn_back"
+        android:padding="14dp"
+        android:id="@+id/iv_second_back" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上传名片"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        android:textSize="18sp"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/btn_paizhao"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/iv_paizhao" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/light_gray"
+        android:textSize="13sp"
+        android:text="如无名片请上传其它工作证明"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="个人简介"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="270dp"
+        android:textSize="18sp"
+        />
+    <EditText
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_alignParentTop="true"
+        android:hint="描述个人情况、工作经历、获得成就等..."
+        android:textSize="16sp"
+        android:gravity="top"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/by_gerenjianjie"
+        android:id="@+id/et_user_desc" />
+    <TextView
+        android:text="下一步"
+        android:clickable="true"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:background="@mipmap/btn_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_second_next" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="21dp"-->
+        <!--android:text="申请成为回答者  2/5"-->
+        <!--android:textColor="@color/app_black"-->
+        <!--android:textSize="18dp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/tutor_typein_seconde_back_iv"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingRight="15dp"-->
+        <!--android:src="@drawable/ic_app_back" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/tutor_typein_second_next_iv"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/ic_base_next" />-->
+
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@id/tutor_typein_second_next_iv"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:scrollbars="none">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="186dp"-->
+                <!--android:layout_height="116dp"-->
+                <!--android:layout_marginTop="46dp"-->
+                <!--android:layout_gravity="center_horizontal">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tutor_second_upload_card_tv"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:text="上传工作证或名片"-->
+                    <!--android:textColor="#e93838"-->
+                    <!--android:textSize="16dp" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/tutor_second_upload_card_iv"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:src="@drawable/ic_upload_card_bg"-->
+                     <!--/>-->
+
+            <!--</RelativeLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_marginTop="46dp"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/tutor_second_now_position"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/app_base_info_bg_color"-->
+                    <!--android:hint="现任职位"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:textColor="@color/app_base_4c"-->
+                    <!--android:textColorHint="#cdcdcd"-->
+                    <!--android:textSize="16dp" />-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:background="#7d7d7d" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_marginTop="30dp"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/tutor_second_now_company"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/app_base_info_bg_color"-->
+                    <!--android:hint="现在公司"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:textColor="@color/app_base_4c"-->
+                    <!--android:textColorHint="#cdcdcd"-->
+                    <!--android:textSize="16dp" />-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:background="#7d7d7d" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_marginTop="30dp"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/tutor_second_job_years"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/app_base_info_bg_color"-->
+                    <!--android:hint="工作年限"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:inputType="number"-->
+                    <!--android:textColor="@color/app_base_4c"-->
+                    <!--android:textColorHint="#cdcdcd"-->
+                    <!--android:textSize="16dp" />-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:background="#7d7d7d" />-->
+
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+    <!--</ScrollView>-->
+
+</RelativeLayout>

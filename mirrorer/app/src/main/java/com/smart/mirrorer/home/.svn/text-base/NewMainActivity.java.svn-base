@@ -1,0 +1,1426 @@
+package com.smart.mirrorer.home;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.justalk.cloud.juslogin.LoginDelegate;
+import com.justalk.cloud.juspush.MiPush;
+import com.justalk.cloud.lemon.MtcCallConstants;
+import com.smart.mirrorer.R;
+import com.smart.mirrorer.adapter.HomeHeadAdapter;
+import com.smart.mirrorer.adapter.HomeQuestionAdapter;
+import com.smart.mirrorer.adapter.MidTutorMatchAdapter;
+import com.smart.mirrorer.base.BaseActivity;
+import com.smart.mirrorer.base.BaseApplication;
+import com.smart.mirrorer.base.TutorInfoTypeInActivity;
+import com.smart.mirrorer.bean.PushQuestionBean;
+import com.smart.mirrorer.bean.home.ApkUpdateBean;
+import com.smart.mirrorer.bean.home.CommonTutorItemData;
+import com.smart.mirrorer.bean.home.HomeIndexBean;
+import com.smart.mirrorer.bean.home.OrderDetailsBean;
+import com.smart.mirrorer.bean.home.OrderDetailsData;
+import com.smart.mirrorer.bean.home.QuestionListBean;
+import com.smart.mirrorer.bean.home.RecommonBean;
+import com.smart.mirrorer.commond.RecommondActivity;
+import com.smart.mirrorer.db.MatchQuestionProviderService;
+import com.smart.mirrorer.event.BusProvider;
+import com.smart.mirrorer.event.LogOutEvent;
+import com.smart.mirrorer.event.UpdateQuestionEvent;
+import com.smart.mirrorer.history.HistoryActivity;
+import com.smart.mirrorer.net.GsonCallbackListener;
+import com.smart.mirrorer.net.PerfectJsonObjectRequest;
+import com.smart.mirrorer.service.HeartbeatService;
+import com.smart.mirrorer.setting.SettingActivity;
+import com.smart.mirrorer.util.CommonUtils;
+import com.smart.mirrorer.util.GloabalRequestUtil;
+import com.smart.mirrorer.util.MirrorSettings;
+import com.smart.mirrorer.util.TipsUtils;
+import com.smart.mirrorer.util.UpdateAppManager;
+import com.smart.mirrorer.util.Urls;
+import com.smart.mirrorer.wallet.WalletActivity;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import cn.jpush.android.api.JPushInterface;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class MainActivity extends BaseActivity implements View.OnClickListener, LoginDelegate.Callback, MidTutorMatchAdapter.ITutorMatchItemClickListener {
+
+    private final int REQUEST_TUTOR_BACK_CODE = 22;
+
+    private boolean isTutor;
+    private RelativeLayout mTutorRootLayout;
+    private RelativeLayout mStudentRootLayout;
+
+    private LinearLayout mFollowLayout;
+
+    private TextView mCallTimeTv;
+    private TextView mTutorReceiverTv;
+    private TextView mTutorSaleTv;
+
+    private LinearLayout mToggleBtn;
+
+    private DrawerLayout mDrawerLayout;
+    private RelativeLayout mNavigationView;
+
+    private MirrorSettings mSettings;
+    private String mUid;
+
+    private Handler uiHandler = new Handler();
+    private Intent mHeartServiceIntent;
+
+    private HomeHeadAdapter mHeadAdapter;
+    private HomeQuestionAdapter mQuestionAdapter;
+
+    /**
+     * 导师端view
+     */
+//    private LinearLayout mTutorMacthlayout;
+    private MidTutorMatchAdapter mMatchAdapter;
+    private List<PushQuestionBean> mTestMatcheList = new ArrayList<>();
+
+//    private TextView mTutorReceiverBtn;
+//    private TextView mTutorOverBtn;
+
+    private TextView mChangeAppTv;
+
+    private CountDownTimer mProgressTimer;
+
+    private RelativeLayout mTimerProgressLayout;
+    private TextView mTimerTv;
+
+
+    private ExecutorService mSingleThreadExecutor = Executors.newSingleThreadExecutor();
+    private boolean isCreate;
+
+    //当前APK版本号
+    private int versionCode = -1;
+    //onCreate中检测更新和右上角点开的手动更新区别标记 true:自动更新 false:手动更新
+    private boolean isAutoUpdate;
+    private UpdateAppManager updateManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        BusProvider.getInstance().register(this);
+
+        JPushInterface.clearAllNotifications(getApplicationContext());
+
+        mSettings = BaseApplication.getSettings(this);
+        mUid = mSettings.APP_UID.getValue();
+
+        isTutor = mSettings.APP_IS_TUTOR_TYPE.getValue();
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(mCallReceiver, new IntentFilter(MtcCallConstants.MtcCallTalkingNotification));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mCallReceiver, new IntentFilter(MtcCallConstants.MtcCallDidTermNotification));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mCallReceiver, new IntentFilter(MtcCallConstants.MtcCallTermedNotification));
+
+        mHeartServiceIntent = new Intent(this, HeartbeatService.class);
+        mHeartServiceIntent.putExtra("app_uid_service", mUid);
+        startService(mHeartServiceIntent);
+
+        LoginDelegate.setCallback(this);
+
+        boolean isJusLogined = mSettings.JUSTALK_IS_LOGINED.getValue();
+//        Log.e("lzm", "isJustLogined=" + isJusLogined);
+        if (!isJusLogined) {
+//            Log.e("lzm", "去登录 justalk..uid="+mUid);
+            LoginDelegate.login(mUid, mUid, "sudp:ae.justalkcloud.com:9851");
+        }
+
+        initView();
+        initListener();
+        startHeartLoop(2000);
+
+        isCreate = true;
+
+        checkAndUpdate();
+    }
+
+    private void startHeartLoop(int delayTime) {
+        // 循环启动心跳服务。
+        uiHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                boolean isStart = HeartbeatService.startLoop();
+                if (!isStart) {
+                    startHeartLoop(1000);
+                }
+            }
+        }, delayTime);
+    }
+
+    /**
+     * 获取问题列表
+     */
+    private void getQuestionData() {
+        if (TextUtils.isEmpty(mUid)) {
+            TipsUtils.showShort(getApplicationContext(), "uid为空");
+            return;
+        }
+
+        String tag_json_obj = "json_obj_home_question_req";
+        showLoadDialog();
+
+        JSONObject paramObj = new JSONObject();
+        try {
+            paramObj.put("uid", mUid);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_HOME_QUESTION, paramObj, mQuestionCallBack, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+                Log.e("lzm", "error:" + error.getMessage());
+//                VolleyLog.d("lzm", "Error: " + error.getMessage());
+                getRecommondList();
+            }
+        });
+
+        // Adding request to request queue
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
+
+    private GsonCallbackListener<QuestionListBean> mQuestionCallBack = new GsonCallbackListener<QuestionListBean>() {
+        @Override
+        public void onResultSuccess(QuestionListBean questionListBean) {
+            super.onResultSuccess(questionListBean);
+            if (questionListBean == null) {
+                getRecommondList();
+                return;
+            }
+
+            getRecommondList();
+            refreshQuestionUI(questionListBean);
+        }
+
+        @Override
+        public void onFailed(String errorMsg) {
+            super.onFailed(errorMsg);
+            TipsUtils.showShort(getApplicationContext(), errorMsg);
+            getRecommondList();
+        }
+    };
+
+    /**
+     * 更新问题列表数据
+     *
+     * @param questionBean
+     */
+    private void refreshQuestionUI(QuestionListBean questionBean) {
+        QuestionListBean.ResultBean questionResult = questionBean.getResult();
+        if (questionResult == null) {
+            return;
+        }
+
+        List<QuestionListBean.ResultBean.ListBean> listDatas = questionResult.getList();
+        if (listDatas == null || listDatas.isEmpty()) {
+            return;
+        }
+
+        mQuestionAdapter.setData(listDatas);
+    }
+
+
+    /**
+     * 获取推荐导师列表
+     */
+    private void getRecommondList() {
+
+        String tag_json_obj = "json_obj_home_recommond_req";
+        JSONObject paramObj = new JSONObject();
+        try {
+            paramObj.put("limit", "4");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_TUTOR_RECOMMOND, paramObj, mRecommondCallBack, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dismissLoadDialog();
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+                Log.e("lzm", "error:" + error.getMessage());
+//                VolleyLog.d("lzm", "Error: " + error.getMessage());
+            }
+        });
+
+        // Adding request to request queue
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
+
+    private GsonCallbackListener<RecommonBean> mRecommondCallBack = new GsonCallbackListener<RecommonBean>() {
+        @Override
+        public void onResultSuccess(RecommonBean recommonBean) {
+            super.onResultSuccess(recommonBean);
+            dismissLoadDialog();
+            if (recommonBean == null) {
+                return;
+            }
+
+            refreshCommondUI(recommonBean);
+        }
+
+        @Override
+        public void onFailed(String errorMsg) {
+            super.onFailed(errorMsg);
+            dismissLoadDialog();
+            TipsUtils.showShort(getApplicationContext(), errorMsg);
+        }
+    };
+
+    private void refreshCommondUI(RecommonBean recommonBean) {
+        RecommonBean.ResultBean recommondResult = recommonBean.getResult();
+        if (recommondResult == null) {
+            return;
+        }
+
+        List<CommonTutorItemData> listDatas = recommondResult.getList();
+        if (listDatas == null || listDatas.isEmpty()) {
+            return;
+        }
+
+        mHeadAdapter.setListData(listDatas);
+    }
+
+    private void initListener() {
+        mDrawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                isOpen = true;
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                isOpen = false;
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+            }
+        });
+
+    }
+
+    private CircleImageView mUserHeadIv;
+    private TextView mNickTv;
+
+    private void initView() {
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);
+        mNavigationView = (RelativeLayout) findViewById(R.id.main_navigation_view);
+        //侧边栏
+        View headerView = mNavigationView.findViewById(R.id.navigation_head_rl);
+        headerView.setOnClickListener(this);
+
+        mUserHeadIv = (CircleImageView) headerView.findViewById(R.id.navigation_head_iv);
+        mNickTv = (TextView) headerView.findViewById(R.id.navigation_nick_tv);
+
+        LinearLayout walletItem = (LinearLayout) mNavigationView.findViewById(R.id.navigation_wallet_item);
+        LinearLayout historyItem = (LinearLayout) mNavigationView.findViewById(R.id.navigation_history_item);
+        LinearLayout updateItem = (LinearLayout) mNavigationView.findViewById(R.id.navigation_update_item);
+        LinearLayout recommonItem = (LinearLayout) mNavigationView.findViewById(R.id.navigation_recommon_item);
+        LinearLayout settingItem = (LinearLayout) mNavigationView.findViewById(R.id.navigation_setting_item);
+        RelativeLayout changeAppItem = (RelativeLayout) mNavigationView.findViewById(R.id.navigation_change_app_rl);
+        mChangeAppTv = (TextView) mNavigationView.findViewById(R.id.navigation_change_app_tv);
+        walletItem.setOnClickListener(this);
+        historyItem.setOnClickListener(this);
+        updateItem.setOnClickListener(this);
+        recommonItem.setOnClickListener(this);
+        settingItem.setOnClickListener(this);
+        changeAppItem.setOnClickListener(this);
+
+        mToggleBtn = (LinearLayout) findViewById(R.id.main_navigation_btn);
+        mToggleBtn.setOnClickListener(this);
+
+        mFollowLayout = (LinearLayout) findViewById(R.id.main_title_follow_layout);
+        mFollowLayout.setOnClickListener(this);
+
+        /**
+         * 导师端
+         */
+        mTutorRootLayout = (RelativeLayout) findViewById(R.id.main_content_mid_root_tutor);
+        mCallTimeTv = (TextView) findViewById(R.id.mid_tutor_call_time_tv);
+        mTutorReceiverTv = (TextView) findViewById(R.id.mid_tutor_receive_count_tv);
+        mTutorSaleTv = (TextView) findViewById(R.id.mid_tutor_money_tv);
+
+//        RecyclerView sysMsgView = (RecyclerView) findViewById(R.id.mid_tutor_system_listview);
+//        sysMsgView.setLayoutManager(new LinearLayoutManager(this));
+//        MidTutorSysMsgAdapter mSysMsgAdapter = new MidTutorSysMsgAdapter();
+//        sysMsgView.setAdapter(mSysMsgAdapter);
+//        List<String> testMsgs = new ArrayList<>();
+//        testMsgs.add("1");
+//        testMsgs.add("1");
+//        testMsgs.add("1");
+//        mSysMsgAdapter.setListData(testMsgs);
+
+//        mTutorMacthlayout = (LinearLayout) findViewById(R.id.mid_tutor_match_layout);
+        RecyclerView macthRecyclerView = (RecyclerView) findViewById(R.id.mid_tutor_match_question_listview);
+        macthRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mMatchAdapter = new MidTutorMatchAdapter();
+        mMatchAdapter.setItemListener(this);
+        macthRecyclerView.setAdapter(mMatchAdapter);
+        mMatchAdapter.setListData(mTestMatcheList);
+
+        mTimerProgressLayout = (RelativeLayout) findViewById(R.id.mid_tutor_time_progress_layout);
+        mTimerTv = (TextView) findViewById(R.id.mid_tutor_timer_tv);
+
+//        mTutorReceiverBtn = (TextView) findViewById(R.id.mid_tutor_receiver_btn);
+//        mTutorOverBtn = (TextView) findViewById(R.id.mid_tutor_over_btn);
+//        mTutorReceiverBtn.getBackground().setAlpha(175);
+//        mTutorOverBtn.getBackground().setAlpha(175);
+//        mTutorReceiverBtn.setOnClickListener(this);
+//        mTutorOverBtn.setOnClickListener(this);
+        /**
+         *学生端
+         */
+        TextView moreTv = (TextView) findViewById(R.id.home_heda_more_tv);
+        moreTv.setOnClickListener(this);
+        mStudentRootLayout = (RelativeLayout) findViewById(R.id.main_content_mid_root);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.home_horizatal_listview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mHeadAdapter = new HomeHeadAdapter(this);
+        recyclerView.setAdapter(mHeadAdapter);
+
+        SwipeMenuListView swipQuestionView = (SwipeMenuListView) findViewById(R.id.home_question_listview);
+        mQuestionAdapter = new HomeQuestionAdapter(this, R.layout.home_question_list_cell);
+        //历史纪录呼叫监听
+        mQuestionAdapter.setCallListener(new HomeQuestionAdapter.ICallHistoryListener() {
+            @Override
+            public void matchHisitory(QuestionListBean.ResultBean.ListBean itemData) {
+                if (itemData == null) {
+                    return;
+                }
+                matchTutor(itemData.getQid(),itemData.getContent());
+            }
+        });
+        swipQuestionView.setAdapter(mQuestionAdapter);
+        swipQuestionView.setMenuCreator(mQuestionAdapter);
+        swipQuestionView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
+        swipQuestionView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0:
+                        // delete
+                        deleteQuestion(position);
+                        break;
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
+
+        swipQuestionView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("lzm", "position=" + position);
+                QuestionListBean.ResultBean.ListBean itemData = mQuestionAdapter.getItem(position);
+                if (itemData == null) {
+                    return;
+                }
+                Intent questionIntent = new Intent(MainActivity.this, MyQuestionActivity.class);
+                questionIntent.putExtra(MyQuestionActivity.KEY_Q_CONTENT, itemData.getContent());
+                questionIntent.putExtra(MyQuestionActivity.KEY_Q_ID, itemData.getQid());
+                startActivity(questionIntent);
+            }
+        });
+
+        ImageView voiceIv = (ImageView) findViewById(R.id.home_voice_iv);
+        voiceIv.setOnClickListener(this);
+    }
+
+    private void matchTutor(String qid, final String questionDesc) {
+
+        String tag_json_obj = "json_obj_tutor_match_req";
+        showLoadDialog();
+
+        JSONObject paramObj = new JSONObject();
+        try {
+            paramObj.put("qid", qid);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_TUTOR_MATCH, paramObj, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                dismissLoadDialog();
+
+                Log.e("lzm", "match_id_text=" + response.toString());
+
+                boolean isOk = GloabalRequestUtil.isRequestOk(response);
+                if (isOk) {
+                    String qid = GloabalRequestUtil.getQId(response);
+                    if (TextUtils.isEmpty(qid)) {
+                        TipsUtils.showShort(getApplicationContext(), "没有返回qid");
+                        return;
+                    }
+
+                    Intent intent = new Intent(MainActivity.this, VoiceVideoActivity.class);
+                    intent.putExtra(VoiceVideoActivity.KEY_Q_ID, qid);
+                    intent.putExtra(VoiceVideoActivity.KEY_Q_DESC,questionDesc);
+                    startActivity(intent);
+                } else {
+                    TipsUtils.showShort(getApplicationContext(), GloabalRequestUtil.getNetErrorMsg(response));
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+                Log.e("lzm", "error:" + error.getMessage());
+//                VolleyLog.d("lzm", "Error: " + error.getMessage());
+                dismissLoadDialog();
+            }
+        });
+
+        // Adding request to request queue
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
+
+    /**
+     * 删除提问记录
+     *
+     * @param position
+     */
+    private void deleteQuestion(int position) {
+
+        if (mQuestionAdapter == null) {
+            return;
+        }
+
+        final QuestionListBean.ResultBean.ListBean itemData = mQuestionAdapter.getItem(position);
+        if (itemData == null) {
+            return;
+        }
+
+        String qid = itemData.getQid();
+        if (TextUtils.isEmpty(qid)) {
+            return;
+        }
+
+        showLoadDialog();
+
+        String tag_json_obj = "json_obj_delete_question_req";
+        JSONObject paramObj = new JSONObject();
+        try {
+            paramObj.put("qid", qid);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_HOME_QUESTION_DELETE, paramObj, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("lzm", "delet_quesiton res=" + response);
+                dismissLoadDialog();
+                boolean isRequestOk = GloabalRequestUtil.isRequestOk(response);
+                if (isRequestOk) {
+                    mQuestionAdapter.remove(itemData);
+                    mQuestionAdapter.notifyDataSetChanged();
+                } else {
+                    String netErrorText = GloabalRequestUtil.getNetErrorMsg(response);
+                    TipsUtils.showShort(getApplicationContext(), netErrorText);
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dismissLoadDialog();
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+            }
+        });
+
+        // Adding request to request queue
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+
+    }
+
+    private boolean isOpen;
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.main_navigation_btn:
+                if (isOpen) {
+                    mDrawerLayout.closeDrawers();
+                } else {
+                    mDrawerLayout.openDrawer(Gravity.LEFT);
+                }
+                break;
+            case R.id.main_title_follow_layout:
+                Intent followIntent = new Intent(MainActivity.this, FollowActivity.class);
+                followIntent.putExtra(FollowActivity.KEY_IS_FOLLOW, true);
+                startActivity(followIntent);
+                break;
+            case R.id.home_heda_more_tv:
+                Intent reCommondIntent = new Intent(MainActivity.this, FollowActivity.class);
+                reCommondIntent.putExtra(FollowActivity.KEY_IS_FOLLOW, false);
+                startActivity(reCommondIntent);
+                break;
+            case R.id.navigation_wallet_item:
+                mDrawerLayout.closeDrawers();
+                processCleanIntent(WalletActivity.class);
+                break;
+            case R.id.navigation_history_item:
+                mDrawerLayout.closeDrawers();
+                processCleanIntent(HistoryActivity.class);
+                break;
+            case R.id.navigation_update_item:
+                mDrawerLayout.closeDrawers();
+                isAutoUpdate = false;
+                autoUpdateApp();
+                break;
+            case R.id.navigation_recommon_item:
+                mDrawerLayout.closeDrawers();
+                processCleanIntent(RecommondActivity.class);
+                break;
+            case R.id.navigation_setting_item:
+                mDrawerLayout.closeDrawers();
+                processCleanIntent(SettingActivity.class);
+                break;
+            case R.id.navigation_head_rl:
+                mDrawerLayout.closeDrawers();
+                Intent tutorIntent = new Intent(this, TutorFileActivity.class);
+                tutorIntent.putExtra(TutorFileActivity.KEY_USE_UID, "");
+                if (isTutor) {
+                    tutorIntent.putExtra(TutorFileActivity.KEY_ISNOT_TUTOR, false);
+                } else {
+                    tutorIntent.putExtra(TutorFileActivity.KEY_ISNOT_TUTOR, true);
+                }
+                startActivity(tutorIntent);
+                break;
+            case R.id.navigation_change_app_rl:
+                Log.e("lzm", "change_isTutor=" + isTutor);
+                switchTutorStatus(!isTutor);
+                mDrawerLayout.closeDrawers();
+                break;
+            case R.id.home_voice_iv:
+                boolean isUnPay = mSettings.APP_IS_UN_PAY.getValue();
+                if (isUnPay) {
+                    TipsUtils.showShort(getApplicationContext(), "您有订单未支付,请支付完成再寻求帮助");
+                    getHomeIndexData();
+                    return;
+                }
+                processCleanIntent(VoiceLisenActivity.class);
+                break;
+//            case R.id.mid_tutor_receiver_btn:
+//                switchTutorStatus(true, false);
+//                break;
+//            case R.id.mid_tutor_over_btn:
+//                switchTutorStatus(false, false);
+//                break;
+        }
+    }
+
+    /**
+     * 切换开关
+     *
+     * @param isOpen
+     */
+    private void switchTutorStatus(final boolean isOpen) {
+
+        showLoadDialog();
+        String tag_json_obj = "json_obj_tutor_switch_req";
+        JSONObject paramObj = new JSONObject();
+        try {
+            paramObj.put("switch", isOpen ? "1" : "0");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_TUTOR_SWITCH, paramObj, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("lzm", "switch___ =" + response);
+                dismissLoadDialog();
+                boolean isRequestOk = GloabalRequestUtil.isRequestOk(response);
+                if (isRequestOk) {
+                    if (isOpen) {
+                        JSONObject resultObj = response.optJSONObject("result");
+                        if (resultObj == null) {
+                            TipsUtils.showShort(getApplicationContext(), "解析异常");
+                            return;
+                        }
+
+                        //0:没有登记导师信息；1:审核通过正常的导师；2:禁用的导师 3:待审核
+                        int flag = resultObj.optInt("flag");
+                        if (flag == 0) {
+                            Intent skipIntent = new Intent(MainActivity.this, TutorInfoTypeInActivity.class);
+                            startActivityForResult(skipIntent, REQUEST_TUTOR_BACK_CODE);
+//                            mTutorSaleTv.setText(getString(R.string.tutor_sale_money_text, 0 + ""));
+//                            mCallTimeTv.setText(getString(R.string.tutor_call_time_text, "0"));
+//                            mTutorReceiverTv.setText(getString(R.string.tutor_receiver_count_text, 0.00 + ""));
+                        } else if (flag == 1) {
+                            changeToTutor();
+                            int helpCount = resultObj.optInt("helpCount");
+                            float amountTotal = (float) resultObj.optDouble("amountTotal");
+                            int callTime = resultObj.optInt("talkTime");
+                            String timeText = CommonUtils.getFormatTime(callTime);
+                            mTutorSaleTv.setText(getString(R.string.tutor_sale_money_text, amountTotal + ""));
+                            mCallTimeTv.setText(getString(R.string.tutor_call_time_text, timeText));
+                            mTutorReceiverTv.setText(getString(R.string.tutor_receiver_count_text, helpCount + ""));
+                        } else if (flag == 2) {
+                            TipsUtils.showShort(getApplicationContext(), "您导师资格已被系统禁用");
+                        } else if (flag == 3) {//等待审核
+                            TipsUtils.showShort(getApplicationContext(), "您的导师信息待审核，请耐心等待");
+                        }
+//                        mTutorOverBtn.setVisibility(View.VISIBLE);
+//                        mTutorReceiverBtn.setText("接单中");
+//                        mTutorReceiverBtn.setEnabled(false);
+                    } else {
+                        mTestMatcheList.clear();
+                        mMatchAdapter.notifyDataSetChanged();
+
+                        clearQuestionDB();
+                        changeToStudent();
+//                        mTutorOverBtn.setVisibility(View.GONE);
+//                        mTutorReceiverBtn.setText("接单");
+//                        mTutorReceiverBtn.setEnabled(true);
+                    }
+                } else {
+                    String netErrorText = GloabalRequestUtil.getNetErrorMsg(response);
+                    TipsUtils.showShort(getApplicationContext(), netErrorText);
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dismissLoadDialog();
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+            }
+        });
+
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
+
+    /**
+     * 开始倒计时
+     */
+    private void startTimerDown() {
+        if (mProgressTimer == null) {
+            mProgressTimer = new CountDownTimer(90 * 1000, 1000) {
+                @Override
+                public void onTick(long l) {
+//                    Log.e("lzm", "l=" + l);
+                    mTimerTv.setText(getResources().getString(R.string.app_senconds_text, (l / 1000) + ""));
+                }
+
+                @Override
+                public void onFinish() {
+                    mTimerTv.setText(getResources().getString(R.string.app_senconds_text, "0"));
+                    mTimerProgressLayout.setVisibility(View.GONE);
+
+                    for (PushQuestionBean testItem : mTestMatcheList) {
+                        testItem.isEnable = true;
+                    }
+                    mMatchAdapter.notifyDataSetChanged();
+                }
+            };
+
+        }
+        mProgressTimer.start();
+    }
+
+    private String mRobQid;
+
+    /**
+     * 导师抢单
+     *
+     * @param positon
+     */
+    private void robItem(int positon) {
+        if (mTestMatcheList.isEmpty()) {
+            TipsUtils.showShort(getApplicationContext(), "没有问题数据");
+            return;
+        }
+
+        PushQuestionBean itemData = mTestMatcheList.get(positon);
+        if (itemData == null) {
+            TipsUtils.showShort(getApplicationContext(), "没有问题数据");
+            return;
+        }
+
+        this.mRobQid = itemData.getQid();
+
+        showLoadDialog();
+
+        String tag_json_obj = "json_obj_tutor_rob_req";
+        JSONObject paramObj = new JSONObject();
+        try {
+            paramObj.put("source", itemData.getSource());
+            paramObj.put("qid", itemData.getQid());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_TUTOR_ROB, paramObj, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("lzm", "rob res=" + response);
+                dismissLoadDialog();
+                boolean isRequestOk = GloabalRequestUtil.isRequestOk(response);
+                if (isRequestOk) {
+                    //获取是否已过期问题
+                    boolean isPastDate = GloabalRequestUtil.isPastDate(response);
+                    Log.e("lzm", "isPastDate=" + isPastDate);
+
+                    if(isPastDate) {
+                        deletQDBWithQid(mRobQid);
+                    } else {
+                        mTimerProgressLayout.setVisibility(View.VISIBLE);
+                        startTimerDown();
+                        for (PushQuestionBean testItem : mTestMatcheList) {
+                            testItem.isEnable = false;
+                        }
+                        mMatchAdapter.notifyDataSetChanged();
+                    }
+
+                } else {
+                    String netErrorText = GloabalRequestUtil.getNetErrorMsg(response);
+                    TipsUtils.showShort(getApplicationContext(), netErrorText);
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dismissLoadDialog();
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+            }
+        });
+
+        // Adding request to request queue
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LoginDelegate.enterForeground();
+        getHomeIndexData();
+    }
+
+    /**
+     * 获取首页数据
+     */
+    private void getHomeIndexData() {
+        String tag_json_obj = "json_obj_home_index_req";
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_HOME_INDEX, null, mIndexCallbak, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+            }
+        });
+
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
+
+    private GsonCallbackListener<HomeIndexBean> mIndexCallbak = new GsonCallbackListener<HomeIndexBean>() {
+        @Override
+        public void onResultSuccess(HomeIndexBean homeIndexBean) {
+            super.onResultSuccess(homeIndexBean);
+            if (homeIndexBean == null) {
+                return;
+            }
+
+            HomeIndexBean.ResultBean resultBean = homeIndexBean.getResult();
+            if (resultBean == null) {
+                return;
+            }
+
+            refreshUserUI(resultBean);
+        }
+
+        @Override
+        public void onFailed(String errorMsg) {
+            super.onFailed(errorMsg);
+            Log.e("lzm", "首页信息获取失败");
+        }
+    };
+
+    private void refreshUserUI(HomeIndexBean.ResultBean resultBean) {
+        String avarUrl = resultBean.getHeadImgUrl();
+        if (!TextUtils.isEmpty(avarUrl)) {
+            BaseApplication.mImageLoader.displayImage(avarUrl, mUserHeadIv, BaseApplication.headOptions);
+        }
+
+        String nickText = resultBean.getNickName();
+        if (TextUtils.isEmpty(nickText)) {
+            nickText = mSettings.USER_NICK.getValue();
+        }
+
+        if (!TextUtils.isEmpty(nickText)) {
+            mNickTv.setText(nickText);
+        }
+
+        String timeText = CommonUtils.getFormatTime(resultBean.getTalkTime());
+        mTutorSaleTv.setText(getString(R.string.tutor_sale_money_text, resultBean.getAmountTotal() + ""));
+        mCallTimeTv.setText(getString(R.string.tutor_call_time_text, timeText));
+        mTutorReceiverTv.setText(getString(R.string.tutor_receiver_count_text, resultBean.getHelpCount() + ""));
+
+        int flag = resultBean.getFlag();
+        if(isCreate) { // 只有走oncreate进来才会需要判断是否自动切换到导师端
+            /**
+             * flag=1说明是有导师,产品需求默认打开导师界面，调用switch打开导师开关
+             * flag不等于1，说明非正常导师注册，直接请求问题页面，显示求问模式UI
+             */
+            if (flag == 1) {
+                switchTutorStatus(true);
+            }
+        }
+
+        if(flag != 1) {
+            changeToStudent();
+        }
+        isCreate = false;
+
+        /**
+         * 如果有未支付订单，就跳转支付界面
+         */
+        List<String> unPayOrderList = resultBean.getOrderList();
+        if (unPayOrderList != null && !unPayOrderList.isEmpty()) {
+            String unPayOrder = unPayOrderList.get(0);
+            if (!TextUtils.isEmpty(unPayOrder)) {
+                mSettings.APP_IS_UN_PAY.setValue(true);
+                CommonUtils.getOrderDetails(MainActivity.this, mUid, unPayOrder, "1", mOrderDetailCallback);
+            } else {
+                mSettings.APP_IS_UN_PAY.setValue(false);
+            }
+        } else {
+            mSettings.APP_IS_UN_PAY.setValue(false);
+        }
+    }
+
+    private GsonCallbackListener<OrderDetailsBean> mOrderDetailCallback = new GsonCallbackListener<OrderDetailsBean>() {
+
+        @Override
+        public void onResultSuccess(OrderDetailsBean orderDetailsBean) {
+            super.onResultSuccess(orderDetailsBean);
+            dismissLoadDialog();
+            if (orderDetailsBean == null) {
+                return;
+            }
+
+            OrderDetailsData detailData = orderDetailsBean.getResult();
+            if (detailData == null) {
+                return;
+            }
+
+            Intent payIntent = new Intent(MainActivity.this, PayOrderConfirmAcitivity.class);
+            payIntent.putExtra(PayOrderConfirmAcitivity.KEY_DATA_ORDER, detailData);
+            startActivity(payIntent);
+        }
+
+        @Override
+        public void onFailed(String errorMsg) {
+            super.onFailed(errorMsg);
+            dismissLoadDialog();
+            TipsUtils.showShort(getApplicationContext(), errorMsg);
+        }
+    };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+        switch (requestCode) {
+            case REQUEST_TUTOR_BACK_CODE:
+                TipsUtils.showShort(getApplicationContext(), "提交成功，待审核");
+                break;
+        }
+    }
+
+    /**
+     * 切换至导师端
+     */
+    private void changeToTutor() {
+        mFollowLayout.setVisibility(View.GONE);
+
+        isTutor = true;
+        mSettings.APP_IS_TUTOR_TYPE.setValue(isTutor);
+
+        mChangeAppTv.setText("切换求问者模式");
+        mStudentRootLayout.setVisibility(View.GONE);
+        mTutorRootLayout.setVisibility(View.VISIBLE);
+
+        updateMatchUI(null, false);
+    }
+
+    private void changeToStudent() {
+        mFollowLayout.setVisibility(View.VISIBLE);
+
+        isTutor = false;
+        mSettings.APP_IS_TUTOR_TYPE.setValue(isTutor);
+
+        mChangeAppTv.setText("切换回答者模式");
+        mTutorRootLayout.setVisibility(View.GONE);
+        mStudentRootLayout.setVisibility(View.VISIBLE);
+        getQuestionData();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LoginDelegate.enterBackground();
+    }
+
+    @Subscribe
+    public void onEventLogout(LogOutEvent event) {
+        MiPush.stop(getApplicationContext());
+        LoginDelegate.logout();
+        finish();
+    }
+
+    private MatchQuestionProviderService mQuestionService;
+
+    @Subscribe
+    public void onEventUpdateMatchQuestion(UpdateQuestionEvent event) {
+        JPushInterface.clearAllNotifications(getApplicationContext());
+        Log.e("lzm", "service__通知..." + event.isDelete + "--qid=" + event.qid);
+        updateMatchUI(event.qid, event.isDelete);
+    }
+
+    /**
+     * 获取匹配问题数据库操作对象
+     *
+     * @return
+     */
+    private MatchQuestionProviderService getQuestionDBService() {
+        if (mQuestionService == null) {
+            mQuestionService = new MatchQuestionProviderService(getApplicationContext());
+        }
+        return mQuestionService;
+    }
+
+
+    /**
+     * 更新推送的问题数据
+     * @param qid
+     * @param isDelete
+     */
+    private void updateMatchUI(String qid, boolean isDelete) {
+        mTestMatcheList.clear();
+        mMatchAdapter.notifyDataSetChanged();
+        getQlistByDB();
+        /**
+         * 抢单中,删除事件调整状态
+         */
+        if (isDelete && !TextUtils.isEmpty(mRobQid) && mRobQid.equals(qid)) {
+            if (mProgressTimer != null) {
+                mProgressTimer.cancel();
+            }
+            mTimerProgressLayout.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * 主要删除通话结束的问题列表项
+     */
+    private BroadcastReceiver mCallReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            boolean isTutorStatus = mSettings.APP_IS_TUTOR_TYPE.getValue();
+            Log.e("lzm", "main_action=" + action + "_isTutor=" + isTutorStatus);
+            if (!isTutorStatus) {
+                return;
+            }
+
+            if (MtcCallConstants.MtcCallTalkingNotification.equals(action)) { //通话接通
+                Log.i("lzm-zf","通话回调");
+                if (mProgressTimer != null) {
+                    mProgressTimer.cancel();
+                }
+                mTimerProgressLayout.setVisibility(View.GONE);
+            } else if (MtcCallConstants.MtcCallDidTermNotification.equals(action)) {
+                if (mProgressTimer != null) {
+                    mProgressTimer.cancel();
+                }
+                mTimerProgressLayout.setVisibility(View.GONE);
+                //通话结束事件，主动挂断
+                delTutorQuestionList();
+            } else if (MtcCallConstants.MtcCallTermedNotification.equals(action)) {
+                if (mProgressTimer != null) {
+                    mProgressTimer.cancel();
+                }
+                mTimerProgressLayout.setVisibility(View.GONE);
+                // 通话结束事件，被动挂断
+                delTutorQuestionList();
+            }
+        }
+    };
+
+    private void delTutorQuestionList() {
+        if (TextUtils.isEmpty(mRobQid)) {
+            return;
+        }
+
+        if (mTestMatcheList.isEmpty()) {
+            return;
+        }
+
+        Iterator<PushQuestionBean> iterator = mTestMatcheList.iterator();
+        while (iterator.hasNext()) {
+            PushQuestionBean itemData = iterator.next();
+            itemData.isEnable = true;
+            if (mRobQid.equals(itemData.getQid())) {
+                iterator.remove();
+                deletQDBWithQid(mRobQid);
+            }
+        }
+
+        mMatchAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        isTutor = false;
+        isCreate = true;
+        if(mSingleThreadExecutor != null) {
+            mSingleThreadExecutor.shutdown();
+            mSingleThreadExecutor = null;
+        }
+
+        if (mProgressTimer != null) {
+            mProgressTimer.cancel();
+        }
+        HeartbeatService.stopLoop();
+        stopService(mHeartServiceIntent);
+        BusProvider.getInstance().unregister(this);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mCallReceiver);
+    }
+
+    @Override
+    public void mtcLoginOk() {
+        mSettings.JUSTALK_IS_LOGINED.setValue(true);
+        Log.e("lzm", "main_登录成功...uid=" + mUid);
+    }
+
+    @Override
+    public void mtcLoginDidFail() {
+        TipsUtils.showShort(getApplicationContext(), "justalk登录失败");
+        Log.e("lzm", "jus main_view_失败...uid=" + mUid);
+        LoginDelegate.login(mUid, mUid, "sudp:ae.justalkcloud.com:9851");
+    }
+
+    //登出成功
+    @Override
+    public void mtcLogoutOk() {
+        mSettings.JUSTALK_IS_LOGINED.setValue(false);
+    }
+
+    //被登出
+    @Override
+    public void mtcLogouted() {
+        mSettings.JUSTALK_IS_LOGINED.setValue(false);
+        LoginDelegate.login(mUid, mUid, "sudp:ae.justalkcloud.com:9851");
+        TipsUtils.showShort(getApplicationContext(), "justalk账户被登出...重新登录");
+//        mSettings.loginoutUser();
+//        MiPush.stop(getApplicationContext());
+//        Intent i = new Intent(this, LoginActivity.class);
+//        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//        startActivity(i);
+//        finish();
+    }
+
+    @Override
+    public void mtcAuthRequire(String s, String s1) {
+
+    }
+
+    @Override
+    public void clickAction(int whatAction, int positon) {
+        Log.e("lzm", "ation=" + whatAction + "__position=" + positon);
+        switch (whatAction) {
+            case MidTutorMatchAdapter.ITutorMatchItemClickListener.WAHT_ACTION_ROB:
+                robItem(positon);
+                break;
+            case MidTutorMatchAdapter.ITutorMatchItemClickListener.WAHT_ACTION_FOLLOW:
+                followQuestion(positon);
+                break;
+            case MidTutorMatchAdapter.ITutorMatchItemClickListener.WAHT_ACTION_ITEM:
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 导师关注问题
+     *
+     * @param positon
+     */
+    private void followQuestion(int positon) {
+        if (mTestMatcheList.isEmpty()) {
+            TipsUtils.showShort(getApplicationContext(), "没有问题数据");
+            return;
+        }
+
+        PushQuestionBean itemData = mTestMatcheList.get(positon);
+        if (itemData == null) {
+            TipsUtils.showShort(getApplicationContext(), "没有问题数据");
+            return;
+        }
+
+        final String tempQId = itemData.getQid();
+        Log.e("lzm", "tempQid =" + tempQId);
+        showLoadDialog();
+
+        String tag_json_obj = "json_obj_tutor_follow_req";
+        JSONObject paramObj = new JSONObject();
+        try {
+            paramObj.put("qid", tempQId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_TUTOR_FOLLOW_QUESTION, paramObj, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("lzm", "follow res=" + response);
+                dismissLoadDialog();
+                boolean isRequestOk = GloabalRequestUtil.isRequestOk(response);
+                if (isRequestOk) {
+                    for (PushQuestionBean testItem : mTestMatcheList) {
+                        if (testItem.getQid().equals(tempQId)) {
+                            testItem.isFollowed = true;
+                        }
+                    }
+                    mMatchAdapter.notifyDataSetChanged();
+                } else {
+                    String netErrorText = GloabalRequestUtil.getNetErrorMsg(response);
+                    TipsUtils.showShort(getApplicationContext(), netErrorText);
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dismissLoadDialog();
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+            }
+        });
+
+        // Adding request to request queue
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
+
+    /**
+     * 清除问题数据库
+     */
+    private void clearQuestionDB() {
+        mSingleThreadExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                getQuestionDBService().clearHistorys();
+            }
+        });
+    }
+
+    private void deletQDBWithQid(final String qid) {
+        mSingleThreadExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                getQuestionDBService().deleteHistorysWithQid(qid);
+            }
+        });
+    }
+
+    private void getQlistByDB() {
+        mSingleThreadExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                List<PushQuestionBean> dBQuestionListData = getQuestionDBService().getAllDate();
+                Log.e("lzm", "dBQuestionListData=" + dBQuestionListData);
+                if(dBQuestionListData!= null && !dBQuestionListData.isEmpty()) {
+                    Log.e("lzm", "db_q_size=" + dBQuestionListData.size());
+
+                    List<PushQuestionBean> tempList = new ArrayList<>();
+
+                    long endTime = System.currentTimeMillis();
+
+                    for (PushQuestionBean testItem : dBQuestionListData) {
+                        testItem.isEnable = true;
+                        long qTime = testItem.getTs();
+
+                        long diff = endTime - qTime;
+                        Log.e("lzm", "db_ts="+qTime+"_sysTIME="+endTime+"_diff="+diff);
+                        if(diff < (80*1000)) { //问题创建的时间在80秒之前，就删除数据
+                            tempList.add(testItem);
+                        } else {
+                            deletQDBWithQid(testItem.getQid());
+                        }
+                    }
+                    Log.e("lzm", "cu_lihoud list.size=" + tempList.size());
+                    Log.e("lzm", "send....");
+                    Message msg = mHandler.obtainMessage();
+                    msg.obj = tempList;
+                    msg.what = 0;
+                    mHandler.sendMessage(msg);
+                }
+
+            }
+        });
+    }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if(mHandler.hasMessages(0)) {
+                return;
+            }
+            Log.e("lzm", "hanld=" + msg.what);
+            switch (msg.what) {
+                case 0:
+                    List<PushQuestionBean> msgList = (List<PushQuestionBean>) msg.obj;
+                    mTestMatcheList.addAll(msgList);
+                    mMatchAdapter.notifyDataSetChanged();
+                    break;
+            }
+        }
+    };
+
+    //=====================================版本更新=================================
+
+    /**
+     * 版本更新 点击按钮用的
+     */
+    public void autoUpdateApp()
+    {
+        //初始化当前apk版本号
+        updateManager = new UpdateAppManager(MainActivity.this);
+        versionCode = updateManager.getVersionCode();
+
+        if(versionCode==-1)return;
+
+        //访问服务器询问是否有新版本:request
+        String tag_json_obj = "apk_update_request";
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_UPDATE, null, mVersionUpdateCallBack, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, "tag_json_obj");
+    }
+
+    /**
+     * 版本更新onCreate中调用的
+     */
+    private void checkAndUpdate()
+    {
+        //自动更新
+        isAutoUpdate = true;
+        autoUpdateApp();
+    }
+
+    //版本更新:callback
+    private GsonCallbackListener<ApkUpdateBean> mVersionUpdateCallBack = new GsonCallbackListener<ApkUpdateBean>() {
+        @Override
+        public void onResultSuccess(ApkUpdateBean updateBean) {
+            super.onResultSuccess(updateBean);
+
+            ApkUpdateBean.ResultBean result = updateBean.getResult();
+
+            if(updateBean==null||result==null)//服务器返回空数据
+                return;
+            else if(Integer.parseInt(result.getVer())>versionCode)//存在新版本
+                updateManager.checkUpdateInfo(result.getUrl(),result.getTitle(),result.getDesc());
+            else if(!isAutoUpdate)//没有新版本
+                TipsUtils.showShort(MainActivity.this,"当前已经是最新版本");
+
+        }
+
+        @Override
+        public void onFailed(String errorMsg) {
+            super.onFailed(errorMsg);
+
+        }
+    };
+
+    //    //点击返回键不退出程序,只是最小化程序
+//    @Override
+//    public boolean dispatchKeyEvent(KeyEvent event) {
+//
+//        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+//            Intent intent = new Intent();
+//            intent.setAction("android.intent.action.MAIN");
+//            intent.addCategory("android.intent.category.HOME");
+//            startActivity(intent);
+//        }
+//        return false;
+//    }
+}

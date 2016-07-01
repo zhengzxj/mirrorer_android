@@ -1,0 +1,33 @@
+package com.smart.mirrorer.db;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DBOpenHelper extends SQLiteOpenHelper {
+
+	private static DBOpenHelper dbhelper = null;
+
+	public static synchronized DBOpenHelper getInstance(Context context) {
+		if (dbhelper == null) {
+			dbhelper = new DBOpenHelper(context);
+		}
+		return dbhelper;
+	}
+
+	private DBOpenHelper(Context context) {
+		super(context, "mirrorer.db", null, 1);
+	}
+
+	@Override
+	public void onCreate(SQLiteDatabase db) {
+		db.execSQL("create table if not exists video_history(_id integer primary key autoincrement,video_path varchar(100),quesion_desc varchar(100),question_id varchar(50),tutor_head varchar(100),tutor_nick varchar(50),price integer,time_format varchar(50),time integer null)");
+		db.execSQL("create table if not exists question_match(_id integer primary key autoincrement,qid varchar(50),source varchar(50),content varchar(100),time varchar(50))");
+	}
+
+	@Override
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+//		db.execSQL("alter table video_history add time integer null");
+	}
+
+}

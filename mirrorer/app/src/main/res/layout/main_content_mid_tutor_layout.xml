@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<!--98+4dp-->
+    <RelativeLayout
+        android:id="@+id/rl_today_info"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/by_jinrixinxi">
+
+        <TextView
+            android:id="@+id/tv_today_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="13dp"
+            android:text="今日信息"
+            android:textStyle="bold"
+            android:textColor="#313131"
+            android:textSize="14sp" />
+        <TextView
+            android:textColor="#313131"
+            android:id="@+id/mid_tutor_call_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="38dp"
+            android:text="通话: 02:32:18"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textSize="14dp" />
+
+        <TextView
+            android:text="接单: 199"
+            android:textColor="#313131"
+            android:id="@+id/mid_tutor_receive_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="36dp"
+            android:layout_marginTop="38dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:textSize="14dp" />
+
+        <TextView
+            android:textColor="#313131"
+            android:text="流水: $78.00"
+            android:id="@+id/mid_tutor_money_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="36dp"
+            android:layout_marginBottom="17dp"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/mid_tutor_time_progress_layout"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="false"
+            android:indeterminateDrawable="@drawable/progress_tutor_time_down" />
+
+        <TextView
+            android:id="@+id/mid_tutor_timer_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/progress_end_color"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mid_tutor_match_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_today_info"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="匹配问题"
+            android:layout_marginBottom="3.5dp"
+            android:textColor="#a1a1a1"
+            android:textSize="13dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:id="@+id/mid_tutor_match_question_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</merge>

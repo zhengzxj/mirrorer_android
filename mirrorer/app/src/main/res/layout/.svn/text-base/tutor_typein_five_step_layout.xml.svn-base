@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_info_bg_color"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:text="申请成为导师  5/5"
+        android:textColor="@color/app_black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/tutor_typein_five_back_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_app_back" />
+
+    <ImageView
+        android:id="@+id/tutor_typein_five_next_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_base_next" />
+
+    <TextView
+        android:id="@+id/tutor_five_desc_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:text="个人简介"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/app_base_4c"
+        android:layout_marginLeft="18dp"
+        />
+
+    <EditText
+        android:id="@+id/tutor_five_edit"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@id/tutor_five_desc_title"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/simple_stroke_gray_line_bg"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:hint="请输入"
+        android:textColorHint="#8e8e8e"
+        android:padding="10dp"
+        android:textColor="@color/app_base_4c"
+        android:gravity="left|top"
+        android:textSize="15dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_below="@id/tutor_five_edit"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="56dp">
+
+        <TextView
+            android:id="@+id/tutor_five_upload_video_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:text="上传视频介绍"
+            android:textColor="#e93838"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/tutor_five_upload_video_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_upload_video_bg"
+            />
+
+        <ImageView
+            android:id="@+id/tutor_five_video_play_iv"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/video_play_btn_bg"
+            android:visibility="gone"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

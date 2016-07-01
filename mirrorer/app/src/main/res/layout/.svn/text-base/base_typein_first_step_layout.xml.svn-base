@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_info_bg_color"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="1/4"
+        android:textColor="@color/app_black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/base_typein_first_close_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_app_close" />
+
+    <ImageView
+        android:id="@+id/base_typein_first_next_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_base_next" />
+
+    <LinearLayout
+        android:id="@+id/base_typein_first_top_head_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/base_typein_first_top_head_iv"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/app_default_head_icon" />
+
+        <TextView
+            android:id="@+id/base_first_update_tv"
+            android:layout_width="52dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/base_upload_btn_bg"
+            android:gravity="center"
+            android:text="上传"
+            android:textColor="@color/app_white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/base_typein_first_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/base_typein_first_top_head_layout"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:text="昵称"
+            android:textColor="#4c4c4c"
+            android:textSize="18dp" />
+
+
+        <EditText
+            android:id="@+id/base_first_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/app_base_info_bg_color"
+            android:hint="请填写您的昵称"
+            android:singleLine="true"
+            android:textColor="#4c4c4c"
+            android:textColorHint="#cdcdcd"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#7d7d7d" />
+
+    </LinearLayout>
+
+</RelativeLayout>

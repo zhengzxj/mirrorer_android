@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/bottom_btn_height"
+        android:background="@color/app_black"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        >
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/btn_camera_cancel_selector"
+            android:textSize="16dp"
+            android:background="@null"
+            android:textColor="@color/gray_blue_textcolor"
+            android:text="取消" />
+
+
+
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/btn_camera_finish_selector"
+            android:textColor="@color/gray_blue_textcolor"
+            android:background="@null"
+            android:textSize="16dp"
+            android:text="确定"  />
+
+    </LinearLayout>
+
+    <com.smart.mirrorer.view.CropImageView
+        android:id="@+id/cropImg"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom" />
+
+</RelativeLayout>

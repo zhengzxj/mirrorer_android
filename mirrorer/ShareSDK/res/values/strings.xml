@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ShareSDK</string>
+    <string name="cancel">取消</string>
+
+    <color name="share_userlist_gray">#535353</color>
+    <color name="white">#ffffff</color>
+    <color name="gray_for_item_click">#f7f7f7</color>
+    <color name="window_bg">#88ff0000</color>
+
+</resources>

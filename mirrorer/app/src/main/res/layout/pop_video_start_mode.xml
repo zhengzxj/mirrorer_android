@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="50dp"
+    android:layout_height="84dp"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/tv_normal_mode"
+        android:layout_width="50dp"
+        android:layout_height="28dp"
+        android:text="普通"
+        android:textColor="@color/app_white"
+        android:gravity="center"
+        android:background="@drawable/shape_video_btn_tv"
+        android:padding="5dp"/>
+    <TextView
+        android:textColor="@color/app_white"
+        android:gravity="center"
+        android:id="@+id/tv_high_mode"
+        android:layout_width="50dp"
+        android:layout_height="28dp"
+        android:text="高清"
+        android:background="@drawable/shape_video_btn_tv"
+        android:padding="5dp"/>
+    <TextView
+        android:textColor="@color/app_white"
+        android:gravity="center"
+        android:background="@drawable/shape_video_btn_tv"
+        android:id="@+id/tv_smart_mode"
+        android:layout_width="50dp"
+        android:layout_height="28dp"
+        android:text="智能"
+        android:padding="5dp"/>
+</LinearLayout>

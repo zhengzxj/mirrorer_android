@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="bottom"
+    android:orientation="vertical" >
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/message_title"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:textSize="16.0sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:text="发帖子" />
+
+    <LinearLayout
+        android:id="@+id/content_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_common_circularbutton_state"
+        android:cacheColorHint="@color/transparent"
+        android:listSelector="@drawable/mm_trans"
+        android:orientation="vertical" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_marginTop="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_common_circularbutton_state"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#ff0000"
+        android:textSize="20.0sp" />
+
+</LinearLayout>

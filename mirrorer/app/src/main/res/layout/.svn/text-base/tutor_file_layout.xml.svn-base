@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_white">
+
+    <RelativeLayout
+        android:id="@+id/tutor_file_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/app_base_title_bg_color">
+
+        <LinearLayout
+            android:id="@+id/tutor_file_back_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_app_close" />
+
+        </LinearLayout>
+
+
+
+            <ImageView
+                android:id="@+id/tutor_file_follow_iv"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_title_follow" />
+
+        <ImageView
+            android:id="@+id/tutor_file_share_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@id/tutor_file_follow_iv"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_title_share"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/file_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="导师档案"
+            android:textColor="@color/app_dark_black"
+            android:textSize="16dp"
+            android:textStyle="bold"
+             />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_gray_color" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tutor_file_title_layout"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <include layout="@layout/tutor_file_content_layout" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <RelativeLayout
+        android:id="@+id/tutor_file_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/app_red"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="14dp"
+            android:src="@drawable/ic_tutor_video"
+            android:scaleType="centerInside"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+</RelativeLayout>

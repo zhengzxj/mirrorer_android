@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/app_base_bg_color">
+
+    <include layout="@layout/navigation_bar_layout" />
+<View
+    android:layout_below="@+id/navigation_bar"
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:background="@color/title_line"/>
+    <com.smart.mirrorer.view.UIItem
+        android:id="@+id/setting_about_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/navigation_bar"
+        android:background="@drawable/white_gray"
+        app:drawBottomDivider="false"
+        app:drawTopDivider="true"
+        app:leftText="关于瞬语" />
+
+    <com.smart.mirrorer.view.UIItem
+        android:id="@+id/setting_clear_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_about_item"
+        android:background="@drawable/white_gray"
+        app:drawBottomDivider="false"
+        app:drawTopDivider="true"
+        app:leftText="清除缓存" />
+
+    <com.smart.mirrorer.view.UIItem
+        android:id="@+id/setting_auto_update_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_clear_item"
+        android:background="@drawable/white_gray"
+        app:drawBottomDivider="false"
+        app:drawTopDivider="true"
+        app:leftText="在线更新" />
+    <com.smart.mirrorer.view.UIItem
+        android:id="@+id/setting_logout_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_auto_update_item"
+        android:background="@drawable/white_gray"
+        app:drawBottomDivider="true"
+        app:drawTopDivider="true"
+        app:leftText="退出" />
+
+</RelativeLayout>

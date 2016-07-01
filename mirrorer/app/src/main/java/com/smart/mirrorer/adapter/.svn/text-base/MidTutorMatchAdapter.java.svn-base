@@ -1,0 +1,122 @@
+package com.smart.mirrorer.adapter;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.smart.mirrorer.R;
+import com.smart.mirrorer.bean.PushQuestionBean;
+
+import java.util.List;
+
+/**
+ * Created by lzm on 16/3/25.
+ */
+public class MidTutorMatchAdapter extends RecyclerView.Adapter {
+
+    private List<PushQuestionBean> mListDatas;
+
+    public void setListData(List<PushQuestionBean> listDatas) {
+        this.mListDatas = listDatas;
+        notifyDataSetChanged();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView mRobTv;
+        private ImageView mfollowIv;
+        private TextView mQuestionTv;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            mRobTv = (TextView) itemView.findViewById(R.id.tutor_item_match_rob_tv);
+            mfollowIv = (ImageView) itemView.findViewById(R.id.tutor_item_match_follow_iv);
+            mQuestionTv = (TextView) itemView.findViewById(R.id.tutor_item_match_question_tv);
+
+            mRobTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        mListener.clickAction(ITutorMatchItemClickListener.WAHT_ACTION_ROB, getAdapterPosition());
+                    }
+                }
+            });
+
+            mfollowIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        mListener.clickAction(ITutorMatchItemClickListener.WAHT_ACTION_FOLLOW, getAdapterPosition());
+                    }
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        mListener.clickAction(ITutorMatchItemClickListener.WAHT_ACTION_ITEM, getAdapterPosition());
+                    }
+                }
+            });
+
+        }
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.tutor_item_match_question_layout, null));
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (mListDatas == null || mListDatas.isEmpty()) {
+            return;
+        }
+
+        ViewHolder viewHolder = (ViewHolder) holder;
+        PushQuestionBean testItem = mListDatas.get(position);
+        if(testItem == null) {
+            return;
+        }
+
+        viewHolder.mQuestionTv.setText(testItem.getContent());
+
+        if(testItem.isFollowed) {
+            viewHolder.mfollowIv.setVisibility(View.GONE);
+        } else {
+            viewHolder.mfollowIv.setVisibility(View.VISIBLE);
+        }
+
+        if(testItem.isEnable) {
+            viewHolder.mRobTv.setEnabled(true);
+//            viewHolder.mfollowIv.setEnabled(true);
+        } else {
+            viewHolder.mRobTv.setEnabled(false);
+//            viewHolder.mfollowIv.setEnabled(false);
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        if (mListDatas == null || mListDatas.isEmpty()) {
+            return 0;
+        }
+        return mListDatas.size();
+    }
+
+    private ITutorMatchItemClickListener mListener;
+    public void setItemListener(ITutorMatchItemClickListener listener) {
+        this.mListener = listener;
+    }
+
+    public interface ITutorMatchItemClickListener{
+        int WAHT_ACTION_ROB = 51;
+        int WAHT_ACTION_FOLLOW = 52;
+        int WAHT_ACTION_ITEM = 53;
+        void clickAction(int whatAction, int positon);
+    }
+}

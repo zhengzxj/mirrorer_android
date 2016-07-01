@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/zhengfei/beifen333/ShareSDK/build/intermediates/res/merged/release/drawable-v23/abc_control_background_material.xml",
+        "source": "/Users/zhengfei/beifen333/ShareSDK/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-v23/abc_control_background_material.xml"
+    },
+    {
+        "merged": "/Users/zhengfei/GitHub/mirrorer_android/mirrorer/ShareSDK/build/intermediates/res/merged/release/drawable-v23/abc_control_background_material.xml",
+        "source": "/Users/zhengfei/GitHub/mirrorer_android/mirrorer/ShareSDK/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-v23/abc_control_background_material.xml"
+    }
+]

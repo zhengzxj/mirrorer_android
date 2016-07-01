@@ -1,0 +1,12 @@
+package com.smart.mirrorer.event;
+
+/**
+ * Created by lzm on 16/4/21.
+ */
+public class PushTutorInfoMsgEvent {
+    public String msgContent;
+    public PushTutorInfoMsgEvent(String msg) {
+        super();
+        this.msgContent = msg;
+    }
+}

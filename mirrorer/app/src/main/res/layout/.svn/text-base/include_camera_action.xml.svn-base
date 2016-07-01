@@ -1,0 +1,49 @@
+<com.videorecorder.widget.CameraControlPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/transparent"
+    android:padding="@dimen/margin_8" >
+    <ImageView
+        android:id="@+id/camera_flashback"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:src="@drawable/bg_flashback_selector" />
+
+    <TextView
+        android:id="@+id/camera_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:text="录制时间00:00"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/font_14" 
+        android:visibility="gone"
+        />
+
+    <CheckBox
+        android:id="@+id/camera_flashlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/margin_16"
+        android:layout_toLeftOf="@+id/camera_orientation"
+        android:background="@drawable/bg_flashlight_selector"
+        android:button="@null"
+        android:checked="false" />
+
+    <CheckBox
+        android:id="@+id/camera_orientation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/bg_camera_orientation_selector"
+        android:button="@null"
+        android:checked="false" />
+
+</com.videorecorder.widget.CameraControlPanelLayout>

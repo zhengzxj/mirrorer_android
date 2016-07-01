@@ -1,0 +1,81 @@
+package com.smart.mirrorer.view;
+
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+
+import com.smart.mirrorer.R;
+import com.smart.mirrorer.util.DeviceConfiger;
+
+/**
+ * Created by lizhiming on 2016/3/24.
+ */
+public class NavigationBarController {
+
+    private Activity mContext;
+    private NavigationBar mNavigationBar;
+    private Resources mResources;
+
+    public NavigationBarController(Activity mContext, NavigationBar navigationBar) {
+        super();
+        this.mContext = mContext;
+        this.mNavigationBar = navigationBar;
+        this.mResources = mContext.getResources();
+    }
+
+    public NavigationBar getNavigationBar() {
+        return mNavigationBar;
+    }
+
+    // 标题栏
+    public void setTitle(int titleId) {
+        String title = mContext.getResources().getString(titleId);
+        setTitle(title);
+    }
+
+    public void setTitle(CharSequence title) {
+        TextView tvTitle = (TextView) View.inflate(mContext, R.layout.navigation_bar_title, null);
+        tvTitle.setText(title);
+        FrameLayout.LayoutParams fParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT);
+        fParams.gravity = Gravity.CENTER;
+        tvTitle.setLayoutParams(fParams);
+        mNavigationBar.setMiddleView(tvTitle);
+
+        mNavigationBar.getBackView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.finish();
+            }
+        });
+    }
+
+    // 右边按钮
+    public View addRightButtonText(String text, View.OnClickListener listener) {
+        TextView rightTextView = (TextView) View.inflate(mContext, R.layout.navigation_bar_btn_text, null);
+        rightTextView.setText(text);
+        rightTextView.setOnClickListener(listener);
+        int padding = DeviceConfiger.dp2px(20);
+        rightTextView.setPadding(0, 0, padding, 0);
+
+//        int margin = (int) mResources.getDimension(R.dimen.title_btn_margin);
+        // rightTextView.setPadding(margin, margin, margin, margin);
+//        FrameLayout.LayoutParams fParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
+//                FrameLayout.LayoutParams.WRAP_CONTENT);
+//        fParams.rightMargin = margin;
+//        rightTextView.setLayoutParams(fParams);
+
+        if (mNavigationBar != null) {
+            mNavigationBar.setRightView(rightTextView);
+        }
+
+        return rightTextView;
+    }
+
+    public View addRightButtonText(int resId, View.OnClickListener listener) {
+        return addRightButtonText(mResources.getString(resId), listener);
+    }
+}

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_info_bg_color"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/btn_back"
+        android:padding="14dp"
+        android:id="@+id/iv_four_back" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="77dp"
+        android:textSize="18sp"
+        android:text="收费标准"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="220dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="153dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:text="¥"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:hint="首5分钟收费"
+            android:inputType="numberDecimal"
+            android:background="@null"
+            android:id="@+id/et_first5_money" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="220dp"
+        android:background="@color/light_gray"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="175dp"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:layout_width="220dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="192dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:text="¥"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_after_5_money"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:hint="5分钟后每分钟收费"
+            android:inputType="numberDecimal"
+            android:background="@null"
+             />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="220dp"
+        android:background="@color/light_gray"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="222dp"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="250dp"
+        android:textSize="18sp"
+        android:text="视频简介"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_marginTop="285dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_paizhao"
+            android:id="@+id/iv_luzhi" />
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/video_play_btn_bg"
+            android:visibility="gone"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_video_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="390dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/light_gray"
+        android:textSize="13sp"
+        android:text="录一段视频与大家打个招呼"/>
+    <TextView
+        android:text="提交"
+        android:clickable="true"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp"
+        android:background="@mipmap/btn_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_commit" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="21dp"-->
+        <!--android:text="申请成为回答者  4/5"-->
+        <!--android:textColor="@color/app_black"-->
+        <!--android:textSize="18dp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/tutor_typein_fourth_back_iv"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingRight="15dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/ic_app_back" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/tutor_typein_fourth_next_iv"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/ic_base_next" />-->
+
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_below="@id/tutor_typein_fourth_next_iv"-->
+            <!--android:layout_marginTop="25dp">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tutor_fourth_edu_title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="教育经历"-->
+                <!--android:textSize="18dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--android:textColor="@color/app_base_4c"-->
+                <!--android:layout_marginLeft="18dp"-->
+                <!--/>-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/tutor_fourth_edu_add_iv"-->
+                <!--android:layout_width="23dp"-->
+                <!--android:layout_height="23dp"-->
+                <!--android:src="@drawable/ic_add_bg"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignTop="@id/tutor_fourth_edu_title"-->
+                <!--android:layout_marginRight="14dp"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/tutor_fourth_edu_wheel_layout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginLeft="18dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_below="@id/tutor_fourth_edu_title"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:layout_height="wrap_content">-->
+                    <!--<com.smart.mirrorer.view.WheelView-->
+                        <!--android:id="@+id/tutor_fourth_start_selview"-->
+                        <!--android:layout_width="150dp"-->
+                        <!--android:layout_height="35dp" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textSize="18dp"-->
+                        <!--android:text="至"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:layout_margin="10dp"-->
+                        <!--android:textColor="@color/app_base_4c"-->
+                        <!--/>-->
+
+                    <!--<com.smart.mirrorer.view.WheelView-->
+                        <!--android:id="@+id/tutor_fourth_end_selview"-->
+                        <!--android:layout_width="150dp"-->
+                        <!--android:layout_height="35dp"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/tutor_fourth_major_edit"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/app_base_info_bg_color"-->
+                    <!--android:hint="专业"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:textColor="#4c4c4c"-->
+                    <!--android:layout_marginTop="38dp"-->
+                    <!--android:textColorHint="#cdcdcd"-->
+                    <!--android:textSize="16dp" />-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:background="#7d7d7d" />-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="30dp"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/tutor_fourth_school_edit"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="@color/app_base_info_bg_color"-->
+                        <!--android:hint="学校"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:textColor="#4c4c4c"-->
+                        <!--android:textColorHint="#cdcdcd"-->
+                        <!--android:textSize="16dp" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:background="#7d7d7d" />-->
+
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/tutor_fourth_edu_listview"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginTop="30dp"-->
+                <!--android:layout_below="@id/tutor_fourth_edu_wheel_layout" />-->
+
+        <!--</RelativeLayout>-->
+
+</RelativeLayout>

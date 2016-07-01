@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/zhengfei/beifen333/ShareSDK/build/intermediates/res/merged/debug/layout-sw600dp-v13/design_layout_snackbar.xml",
+        "source": "/Users/zhengfei/beifen333/ShareSDK/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout-sw600dp/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/zhengfei/GitHub/mirrorer_android/mirrorer/ShareSDK/build/intermediates/res/merged/debug/layout-sw600dp-v13/design_layout_snackbar.xml",
+        "source": "/Users/zhengfei/GitHub/mirrorer_android/mirrorer/ShareSDK/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout-sw600dp/design_layout_snackbar.xml"
+    }
+]

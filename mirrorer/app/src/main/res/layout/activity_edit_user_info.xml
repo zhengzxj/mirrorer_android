@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_bg_color"
+    android:orientation="vertical">
+    <!--头部-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/tv_commite_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="14dp"
+            android:background="@drawable/shape_withe_black_corner"
+            android:padding="3dp"
+            android:text="保存" />
+    </RelativeLayout>
+    <!--头部分割线-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/title_line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_upload_head"
+                    android:layout_width="80dp"
+                    android:layout_height="78dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    android:src="@drawable/btnxiangji" />
+
+                <TextView
+                    android:id="@+id/tv_upload_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_upload_head"
+                    android:layout_centerHorizontal="true"
+                    android:padding="5dp"
+                    android:text="上传头像"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_choose_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_upload_head">
+
+                    <ImageView
+                        android:id="@+id/iv_man"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="102dp"
+                        android:padding="5dp"
+                        android:src="@drawable/btn_nanshi_se" />
+
+                    <ImageView
+                        android:id="@+id/iv_women"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginRight="100dp"
+                        android:padding="5dp"
+                        android:src="@drawable/btn_woman" />
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/et_nick"
+                    android:layout_width="192dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_choose_sex"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="35dp"
+                    android:background="@null"
+                    android:hint="昵称"
+                    android:textColor="@color/app_dark_black"
+                    android:textColorHint="#d1d1d1"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="192dp"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/et_nick"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/light_gray" />
+                <!--<TextView-->
+                <!--android:id="@+id/register_volid_tv"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/volid_code_get_text"-->
+                <!--android:textSize="14dp" />-->
+
+                <EditText
+                    android:id="@+id/et_company"
+                    android:layout_width="192dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/et_nick"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@null"
+                    android:hint="公司"
+                    android:textColor="@color/app_dark_black"
+                    android:textColorHint="#d1d1d1"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="192dp"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/et_company"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/light_gray"
+                    />
+
+                <EditText
+                    android:id="@+id/et_position"
+                    android:layout_width="192dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/et_company"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@null"
+                    android:hint="职位"
+                    android:textColor="@color/app_dark_black"
+                    android:textColorHint="#d1d1d1"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="192dp"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/et_position"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/light_gray" />
+            </RelativeLayout>
+            <!--收费-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tutor_view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="收费标准"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/tutor_view2"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="76dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingRight="10dp"
+                        android:text="¥"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_first5_money"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="首5分钟收费"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tutor_view3"
+                    android:layout_width="220dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="98dp"
+                    android:background="@color/light_gray" />
+
+                <LinearLayout
+                    android:id="@+id/tutor_view4"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="115dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingRight="10dp"
+                        android:text="¥"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_after_5_money"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="5分钟后每分钟收费"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tutor_view5"
+                    android:layout_width="220dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="140dp"
+                    android:background="@color/light_gray" />
+            </RelativeLayout>
+            <!--视频简介-->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="视频简介"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/iv_luzhi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp" />
+
+                <ImageView
+                    android:id="@+id/iv_play"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="48dp"
+                    android:src="@drawable/video_play_btn_bg"
+                    android:visibility="gone"
+                     />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_reupload_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_withe_black_corner"
+                android:padding="2dp"
+                android:text="重新上传" />
+            <!--个人简介-->
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:text="个人简介"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/et_user_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:background="@mipmap/by_gerenjianjie"
+                android:gravity="top"
+                android:hint="描述个人情况、工作经历、获得成就等..."
+                android:padding="7dp"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

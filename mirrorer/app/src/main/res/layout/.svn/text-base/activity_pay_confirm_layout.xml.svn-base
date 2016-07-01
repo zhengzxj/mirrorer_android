@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/pay_confirm_root"
+    android:background="@color/app_base_bg_color"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/navigation_bar_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/navigation_bar"
+        android:orientation="vertical">
+
+        <include layout="@layout/cell_recommon_liked_layout" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/app_gray_color"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/app_white"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/pay_confirm_q_desc_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="22dp"
+                android:textSize="16dp"
+                android:textColor="@color/app_light_black"/>
+
+            <TextView
+                android:id="@+id/pay_confirm_call_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="22dp"
+                android:textColor="@color/app_dark_black"
+                android:textSize="16dp"
+                android:layout_below="@id/pay_confirm_q_desc_tv"
+                />
+
+            <TextView
+                android:id="@+id/pay_confirm_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="35dp"
+                android:layout_alignBottom="@id/pay_confirm_call_time_tv"
+                android:textColor="#e93939"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/app_gray_color"
+            />
+
+        <RelativeLayout
+            android:id="@+id/pay_confirm_pay_style_item"
+            android:layout_width="match_parent"
+            android:background="@drawable/white_gray"
+            android:layout_height="80dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:layout_centerVertical="true"
+                android:textSize="16dp"
+                android:textColor="@color/app_dark_black"
+                android:text="支付方式"/>
+
+            <ImageView
+                android:id="@+id/pay_confirm_right_iv"
+                android:layout_width="16dp"
+                android:layout_height="26dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_enter_arrow_navigation"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="36dp"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/pay_confirm_pay_text_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/app_dark_black"
+                android:text="支付宝支付"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/pay_confirm_right_iv"
+                android:layout_marginRight="15dp"
+                />
+
+            <ImageView
+                android:id="@+id/pay_confirm_pay_icon_iv"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@drawable/ic_alipay_img"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/pay_confirm_pay_text_tv"
+                android:layout_marginRight="10dp"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/app_gray_color"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="54dp">
+
+        <TextView
+            android:id="@+id/pay_cnfirm_commit_tv"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:background="#e93939"
+            android:layout_alignParentRight="true"
+            android:textSize="18dp"
+            android:textColor="@color/app_white"
+            android:gravity="center"
+            android:text="提交订单"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:layout_toLeftOf="@id/pay_cnfirm_commit_tv">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/app_black"/>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@color/app_black"/>
+
+            <TextView
+                android:id="@+id/pay_confirm_total_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#e93939"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:layout_centerVertical="true"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="@color/app_black"
+                android:layout_toLeftOf="@id/pay_confirm_total_price_tv"
+                android:layout_marginRight="15dp"
+                android:layout_centerVertical="true"
+                android:text="合计："/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

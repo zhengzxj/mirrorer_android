@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_black"
+    >
+    <TextView
+        android:id="@+id/tv_mQdesc_no_tutor"
+        android:layout_marginTop="170dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:text="goasdfasfasfasdfs"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+    <EditText
+        android:id="@+id/ev_mQdesc_no_tutor"
+        android:layout_marginTop="170dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@color/app_white"
+        android:background="@color/app_black"
+        android:textColorHint="@color/app_white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="goasdfasfasfasdfs"
+        android:visibility="visible"
+        />
+
+    <RelativeLayout
+        android:layout_below="@+id/tv_mQdesc_no_tutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_notice_no_tutor"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未匹配到合适的回答者,请重新提交问题"
+            android:layout_centerHorizontal="true"
+            />
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/tv_notice_no_tutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:id="@+id/iv_cancle_no_tutor"
+                android:src="@drawable/question_cacle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/iv_reload_no_tutor"
+                android:src="@drawable/question_reload"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/iv_edit_no_tutor"
+                android:src="@drawable/question_edit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
+

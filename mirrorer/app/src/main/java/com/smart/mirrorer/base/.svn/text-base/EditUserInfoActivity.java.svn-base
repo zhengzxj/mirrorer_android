@@ -1,0 +1,70 @@
+package com.smart.mirrorer.history;
+
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
+import com.smart.mirrorer.R;
+import com.smart.mirrorer.adapter.HistoryListAdapter;
+import com.smart.mirrorer.base.BaseActivity;
+import com.smart.mirrorer.base.BaseTitleActivity;
+import com.smart.mirrorer.bean.DBHistoryData;
+import com.smart.mirrorer.db.VideoHistoryProviderService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by lzm on 16/3/26.
+ */
+public class HistoryActivity extends BaseTitleActivity {
+
+    private HistoryListAdapter mAdapter;
+
+    private List<DBHistoryData> mHistoryVideos = new ArrayList<DBHistoryData>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_history_layout);
+        setupNavigationBar(R.id.navigation_bar);
+        setCommonTitle(R.string.navigation_history_text);
+
+        initView();
+        initData();
+    }
+
+    private void initView() {
+
+        RecyclerView historyListview = (RecyclerView) findViewById(R.id.history_recycle_view);
+        historyListview.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new HistoryListAdapter(this);
+        historyListview.setAdapter(mAdapter);
+    }
+
+    private void initData()
+    {
+        getAllHistoryVideos();
+
+        mAdapter.setListData(mHistoryVideos);
+    }
+
+    private void getAllHistoryVideos()
+    {
+        //获取db
+        getHistoryDBService();
+
+        mHistoryVideos = mVideoHistoryProviderService.getAllDate();
+    }
+
+    private VideoHistoryProviderService mVideoHistoryProviderService;
+
+    private VideoHistoryProviderService getHistoryDBService() {
+
+        if (mVideoHistoryProviderService == null) {
+            mVideoHistoryProviderService = new VideoHistoryProviderService(getApplicationContext());
+        }
+        return mVideoHistoryProviderService;
+    }
+
+}

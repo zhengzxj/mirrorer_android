@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:id="@+id/sl_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="match_parent"
+                android:background="#434343"
+                android:layout_height="0.5dp" />
+            <!--分割标题栏-->
+            <TextView
+                android:id="@+id/tv_info_title"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:text="个人资料"
+                android:textColor="#454545"
+                android:textSize="13sp"
+                android:paddingLeft="14dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/by_title_gray"/>
+            <!--个人资料内容-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:id="@+id/aaaa">
+                <!--头像-->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/tutor_file_head_iv"
+                    android:layout_width="60dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/app_default_head_icon" />
+                <!--头像以外信息-->
+                <LinearLayout
+                    android:id="@+id/tutor_file_job_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tutor_file_head_iv"
+                    android:orientation="vertical">
+                    <!--公司和星星-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="公司"
+                            android:id="@+id/file_company_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#313131"
+                            android:textSize="12dp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="10dp" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3.5dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/icon_xing_black" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.7"
+                            android:paddingRight="14dp"
+                            android:id="@+id/tutor_file_right_count_tv" />
+                    </LinearLayout>
+                    <!--职位-->
+
+                    <TextView
+                        android:text="职位"
+                        android:layout_marginTop="2dp"
+                        android:id="@+id/file_position_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/app_light_black"
+                        android:textSize="12dp" />
+                    <!--价格-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tutor_file_price_layout">
+                        <TextView
+                            android:id="@+id/file_five_minute_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="2dp"
+                            android:textColor="#C4E7CC"
+                            android:paddingRight="2dp"
+                            android:background="@drawable/shape_user_info_tv"
+                            android:text="首5分钟:$9999"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:textColor="#C4E7CC"
+                            android:layout_toRightOf="@+id/file_five_minute_tv"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/shape_user_info_tv"
+                            android:text="5分钟后:$9999/分钟"
+                            android:id="@+id/file_minute_tv" />
+                    </RelativeLayout>
+                    <!--价格-->
+
+                </LinearLayout>
+                <!--<TextView-->
+                <!--android:id="@+id/tutor_file_right_count_tv"-->
+                <!--android:textSize="14dp" />-->
+            </RelativeLayout>
+
+            <!--个人简介 分割栏-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:text="个人简介"
+                android:textColor="#454545"
+                android:textSize="13sp"
+                android:paddingLeft="14dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/by_title_gray"/>
+            <!--视频框-->
+            <RelativeLayout
+                android:id="@+id/rl_video"
+                android:layout_width="match_parent"
+                android:layout_height="185dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="15.5dp"
+                android:layout_marginRight="15.5dp">
+
+                <View
+                    android:background="@mipmap/by_user_info_shipin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/file_video_layout" />
+
+                <ImageView
+                    android:id="@+id/file_video_play_iv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    android:scaleType="centerInside"
+                    />
+            </RelativeLayout>
+            <!--个人描述-->
+            <TextView
+                android:layout_marginTop="8dp"
+                android:id="@+id/file_desc_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="15.5dp"
+                android:layout_marginRight="15.5dp"
+                android:textColor="#000000"
+                android:text=""
+                android:textSize="14dp" />
+
+            <!--工作经历 分割栏-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:text="工作经历"
+                android:textColor="#454545"
+                android:textSize="13sp"
+                android:paddingLeft="14dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/by_title_gray"/>
+
+            <com.smart.mirrorer.view.ScrollListView
+                android:id="@+id/file_job_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:listSelector="@android:color/transparent" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+            <!--用户评价 分割栏-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:text="用户评价"
+                android:textColor="#454545"
+                android:textSize="13sp"
+                android:paddingLeft="14dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/by_title_gray"/>
+            <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/file_evaluate_listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="830dp"
+                        android:background="@color/app_white"></android.support.v7.widget.RecyclerView>
+                </LinearLayout>
+            <!--</ScrollView>-->
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

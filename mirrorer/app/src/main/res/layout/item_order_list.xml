@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <!--android:background="@drawable/by_neirongbeijing"-->
+    <!--第一行-->
+    <RelativeLayout
+        android:layout_marginBottom="11dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="14dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="18dp"
+        android:layout_height="wrap_content">
+        <!--头像-->
+        <com.smart.mirrorer.view.CornerImageView
+            android:id="@+id/iv_head"
+            android:layout_width="30dp"
+            android:layout_marginRight="7dp"
+            android:src="@drawable/sonny"
+            android:layout_height="30dp" />
+        <TextView
+            android:layout_toRightOf="@+id/iv_head"
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_name"
+            android:textSize="14sp"
+            android:textColor="#606060"
+            android:text="爱丽斯梦游仙境"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_ispay"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="待支付"
+            android:layout_alignParentRight="true"
+            android:textSize="18sp"
+            android:textColor="#e82309"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="12sp"
+            android:id="@+id/tv_whose"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_ispay"
+            android:layout_marginRight="8dp"
+            android:text="我的提问"
+            android:paddingLeft="2dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+            android:paddingRight="2dp"
+            android:textColor="#C4E7CC"
+            android:textStyle="bold"
+            android:background="@drawable/shape_green_bland"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <!--第二行-->
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="14dp"
+        android:textColor="#313131"
+        android:textSize="16sp"
+        android:layout_marginBottom="12dp"
+        android:text="我的问题"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:layout_marginRight="23dp"/>
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="11dp"
+        android:textSize="14sp"
+        android:textColor="#606060"
+        android:layout_marginBottom="12dp"
+        android:text="05-23 23:00"
+        android:gravity="right|center_vertical"
+        android:layout_marginRight="11dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#b8b8b8"/>
+
+</LinearLayout>

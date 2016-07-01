@@ -1,0 +1,324 @@
+package com.smart.mirrorer.home;
+
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.iflytek.thridparty.G;
+import com.smart.mirrorer.R;
+import com.smart.mirrorer.adapter.CommonAdapter;
+import com.smart.mirrorer.adapter.EvaluateTagAdapter;
+import com.smart.mirrorer.base.BaseApplication;
+import com.smart.mirrorer.base.BaseTitleActivity;
+import com.smart.mirrorer.bean.BaseIndustryBean;
+import com.smart.mirrorer.bean.TestAppBean;
+import com.smart.mirrorer.bean.TestTutorInfoBean;
+import com.smart.mirrorer.bean.home.EvaluateTagsBean;
+import com.smart.mirrorer.bean.home.OrderDetailsData;
+import com.smart.mirrorer.bean.home.QuestionListBean;
+import com.smart.mirrorer.commond.RecommondActivity;
+import com.smart.mirrorer.net.GsonCallbackListener;
+import com.smart.mirrorer.net.PerfectJsonObjectRequest;
+import com.smart.mirrorer.util.DeviceConfiger;
+import com.smart.mirrorer.util.GloabalRequestUtil;
+import com.smart.mirrorer.util.MaterialUtils;
+import com.smart.mirrorer.util.MirrorSettings;
+import com.smart.mirrorer.util.SnsUtils;
+import com.smart.mirrorer.util.TipsUtils;
+import com.smart.mirrorer.util.Urls;
+import com.smart.mirrorer.view.NoToggleCheckBox;
+import com.smart.mirrorer.view.ScrollListView;
+import com.videorecorder.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+/**
+ * Created by lzm on 16/5/13.
+ */
+public class EidtOrShowEvaluateActivity extends BaseTitleActivity implements View.OnClickListener {
+
+    public static final String KEY_ORDER_DATA = "key_order_data";
+
+    private CircleImageView mHeadIv;
+    private TextView mNickTv;
+    private TextView mCompanyTv;
+    private TextView mPositionTv;
+    private TextView mStartTv;
+    private TextView mMinuteTv;
+    private TextView mStarCountTv;
+
+    private TextView mPayedMoneyTv;
+
+    private LinearLayout mMoneyLayout;
+    private LinearLayout mEditContentLayout;
+
+    private OrderDetailsData mOrderDeatailsData;
+
+    private EvaluateTagAdapter mAdapter;
+
+    private String mUid;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_evaluate_layout);
+        setupNavigationBar(R.id.navigation_bar);
+        setCommonTitle("评价");
+
+        MirrorSettings settings = BaseApplication.getSettings(this);
+        mUid = settings.APP_UID.getValue();
+        mOrderDeatailsData = getIntent().getExtras().getParcelable(KEY_ORDER_DATA);
+
+        initView();
+
+        getTags();
+        if (mOrderDeatailsData != null) {
+            updateTopUI();
+        }
+    }
+
+    /**
+     * 获取评价标签
+     */
+    private void getTags() {
+        String tag_json_obj = "json_obj_evaluate_tag_req";
+        showLoadDialog();
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_EVALUATE_TAGS, null, mTagsCallBack, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dismissLoadDialog();
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+            }
+        });
+
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
+
+    private GsonCallbackListener<EvaluateTagsBean> mTagsCallBack = new GsonCallbackListener<EvaluateTagsBean>() {
+        @Override
+        public void onResultSuccess(EvaluateTagsBean evaluateTagsBeanBean) {
+            super.onResultSuccess(evaluateTagsBeanBean);
+            dismissLoadDialog();
+            if (evaluateTagsBeanBean == null) {
+                return;
+            }
+
+            EvaluateTagsBean.ResultBean resultBean = evaluateTagsBeanBean.getResult();
+            if (resultBean == null) {
+                return;
+            }
+
+            List<EvaluateTagsBean.ResultBean.TagListBean> tagList = resultBean.getTag_list();
+            if (tagList == null || tagList.isEmpty()) {
+                return;
+            }
+
+            mAdapter.setData(tagList);
+        }
+
+        @Override
+        public void onFailed(String errorMsg) {
+            super.onFailed(errorMsg);
+            dismissLoadDialog();
+            TipsUtils.showShort(getApplicationContext(), errorMsg);
+        }
+    };
+
+    private void updateTopUI() {
+        String headUrl = mOrderDeatailsData.getGuiderHeadUrl();
+        if (!TextUtils.isEmpty(headUrl)) {
+            BaseApplication.mImageLoader.displayImage(headUrl, mHeadIv, BaseApplication.headOptions);
+        }
+        mNickTv.setText(mOrderDeatailsData.getGuiderName());
+        mCompanyTv.setText(mOrderDeatailsData.getCompany());
+        mPositionTv.setText(mOrderDeatailsData.getTitle());
+        mStartTv.setText(getResources().getString(R.string.tutor_five_minute_price, mOrderDeatailsData.getStartPrice() + ""));
+        mMinuteTv.setText(getResources().getString(R.string.tutor_minute_price, mOrderDeatailsData.getMinutePrice() + ""));
+        mStarCountTv.setText(mOrderDeatailsData.getGuiderStar() + "");
+
+        mPayedMoneyTv.setText(mOrderDeatailsData.getPayMoney() + "");
+    }
+
+    private RatingBar mRating;
+    private int mScroreInt;
+    private EditText mContentEdit;
+    private TextView mContentTv;
+    private TextView mCommitTv;
+    private TextView mPleaseTv;
+
+    private void initView() {
+        mHeadIv = (CircleImageView) findViewById(R.id.recommon_like_cell_head_iv);
+        mNickTv = (TextView) findViewById(R.id.liked_nick_tv);
+        mCompanyTv = (TextView) findViewById(R.id.liked_company_tv);
+        mPositionTv = (TextView) findViewById(R.id.liked_position_tv);
+        mStartTv = (TextView) findViewById(R.id.liked_start_price_tv);
+        mMinuteTv = (TextView) findViewById(R.id.liked_minute_price_tv);
+        mStarCountTv = (TextView) findViewById(R.id.recommon_like_cell_right_count_tv);
+        ImageView videoIv = (ImageView) findViewById(R.id.recommon_like_cell_video_icon);
+        videoIv.setVisibility(View.GONE);
+
+        mMoneyLayout = (LinearLayout) findViewById(R.id.evaluate_money_layout);
+        mPayedMoneyTv = (TextView) findViewById(R.id.evaluate_payed_money_tv);
+
+        mPleaseTv = (TextView) findViewById(R.id.evaluate_please_choose_tv);
+
+        mRating = (RatingBar) findViewById(R.id.evaluate_star_ratingbar);
+        mRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                mMoneyLayout.setVisibility(View.GONE);
+                mEditContentLayout.setVisibility(View.VISIBLE);
+
+                if (rating == 1.0) {
+                    mScroreInt = 1;
+                } else if (rating == 2.0) {
+                    mScroreInt = 2;
+                } else if (rating == 3.0) {
+                    mScroreInt = 3;
+                } else if (rating == 4.0) {
+                    mScroreInt = 4;
+                } else if (rating == 5.0) {
+                    mScroreInt = 5;
+                }
+            }
+        });
+
+        //标签选择以下的布局
+        mEditContentLayout = (LinearLayout) findViewById(R.id.evaluate_content_layout);
+        ScrollListView listView = (ScrollListView) findViewById(R.id.evaluate_tag_listview);
+        mAdapter = new EvaluateTagAdapter(this, R.layout.item_evaluate_tag_layout);
+        listView.setAdapter(mAdapter);
+
+        mContentEdit = (EditText) findViewById(R.id.evaluate_content_edit);
+        mContentTv = (TextView) findViewById(R.id.evaluate_content_tv);
+        mCommitTv = (TextView) findViewById(R.id.evaluate_commit_tv);
+        mCommitTv.setOnClickListener(this);
+    }
+
+    private String mShareUrl = "http://www.mirrorer.com/";
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.evaluate_commit_tv:
+                if (isShareType) {
+                    SnsUtils.shareApp(EidtOrShowEvaluateActivity.this, "瞬语", "语音提问，全球众包，即时视频回答", mShareUrl);
+                } else {
+                    commitEvaluate();
+                }
+                break;
+        }
+    }
+
+    private void commitEvaluate() {
+        if (mOrderDeatailsData == null) {
+            TipsUtils.showShort(getApplicationContext(), "订单信息异常");
+            return;
+        }
+
+        String tag_json_obj = "json_obj_evaluate_commit_req";
+        showLoadDialog();
+
+        JSONObject paramObj = getParamsObj();
+
+        Log.e("lzm", "paramobj=" + paramObj.toString());
+
+        PerfectJsonObjectRequest jsonObjReq = new PerfectJsonObjectRequest(mUid, Request.Method.POST,
+                Urls.URL_EVALUATE_COMMIT, paramObj, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                dismissLoadDialog();
+                Log.e("lzm", "commit_res_text =" + response.toString());
+                TipsUtils.showShort(getApplicationContext(), GloabalRequestUtil.getNetErrorMsg(response));
+                boolean isOk = GloabalRequestUtil.isRequestOk(response);
+                if (isOk) {
+                    showSucUI();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dismissLoadDialog();
+                TipsUtils.showShort(getApplicationContext(), error.getMessage());
+            }
+        });
+
+        BaseApplication.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
+
+    /**
+     * 显示评论成功ui
+     */
+    private void showSucUI() {
+        setCommonTitle("评价详情");
+        mMoneyLayout.setVisibility(View.VISIBLE);
+        mRating.setClickable(false);
+        mRating.setEnabled(false);
+        mAdapter.setUnCheck();
+
+        mContentTv.setVisibility(View.VISIBLE);
+        mContentTv.setText(mContentEdit.getText().toString());
+
+        mPleaseTv.setVisibility(View.GONE);
+        mContentEdit.setVisibility(View.GONE);
+
+        mCommitTv.setText("分享");
+        isShareType = true;
+
+    }
+
+    private boolean isShareType;
+
+    /**
+     * 拼接提交参数
+     *
+     * @return
+     */
+    private JSONObject getParamsObj() {
+        List<EvaluateTagsBean.ResultBean.TagListBean> tagListData = mAdapter.getData();
+        JSONArray arr = new JSONArray();
+        for (EvaluateTagsBean.ResultBean.TagListBean itemTag : tagListData) {
+            if (itemTag.isChecked) {
+                arr.put(itemTag.getTag_name());
+            }
+        }
+
+        JSONObject object = new JSONObject();
+        try {
+            object.putOpt("gid", mOrderDeatailsData.getGuiderId());
+            object.putOpt("oid", mOrderDeatailsData.getOrderId());
+            object.putOpt("score", mScroreInt + "");
+            object.putOpt("tags", arr);
+            object.putOpt("body", mContentEdit.getText().toString());
+            object.putOpt("flag", "1");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return object;
+    }
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_bg_color"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="3/4"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/app_black" />
+
+    <ImageView
+        android:id="@+id/base_typein_third_back_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_app_back" />
+
+    <ImageView
+        android:id="@+id/base_typein_third_next_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_base_next" />
+
+
+    <TextView
+        android:id="@+id/base_third_position_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/app_base_4c"
+        android:textSize="18dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="180dp"
+        android:text="身份"/>
+
+    <RadioGroup
+        android:id="@+id/base_second_randio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/base_third_position_tv"
+        android:layout_marginTop="65dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/base_second_radio_enter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/app_base_4c"
+            android:drawablePadding="15dp"
+            android:checked="true"
+            android:button="@null"
+            android:drawableLeft="@drawable/base_check_bg"
+            android:text="创业者"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/base_second_radio_emploee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/app_base_4c"
+            android:drawablePadding="15dp"
+            android:button="@null"
+            android:drawableLeft="@drawable/base_check_bg"
+            android:text="在职者"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/base_second_radio_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_base_4c"
+            android:layout_marginLeft="30dp"
+            android:drawableLeft="@drawable/base_check_bg"
+            android:drawablePadding="15dp"
+            android:button="@null"
+            android:text="提问者"></RadioButton>
+    </RadioGroup>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="130dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="14dp"
+        android:textColor="#cdcdcd"
+        android:text="请确认您的身份，有助于精准匹配合适的回答者"/>
+
+</RelativeLayout>

@@ -1,0 +1,34 @@
+10
+
+dir
+429
+svn://112.74.67.189:8001/android-client/Mirrorer/trunk/app/src
+svn://112.74.67.189:8001
+
+
+
+2016-05-28T05:21:42.503124Z
+429
+zhengzxj
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3c80badd-b18a-430b-8591-8e43294629e8
+
+androidTest
+dir
+
+main
+dir
+

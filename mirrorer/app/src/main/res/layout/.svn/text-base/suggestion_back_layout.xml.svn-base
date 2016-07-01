@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base_bg_color">
+
+    <include layout="@layout/navigation_bar_layout" />
+
+    <EditText
+        android:id="@+id/feedback_edit"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:gravity="left|top"
+        android:padding="15dp"
+        android:textSize="15dp"
+        android:maxLength="250"
+        android:textColor="@color/app_dark_black"
+        android:textColorHint="@color/app_light_black"
+        android:hint="请输入您的问题"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="不能超过250个字符"
+        android:layout_gravity="right"
+        android:textColor="@color/app_low_black"
+        android:textSize="12dp"
+        android:layout_margin="10dp"
+        />
+
+</LinearLayout>

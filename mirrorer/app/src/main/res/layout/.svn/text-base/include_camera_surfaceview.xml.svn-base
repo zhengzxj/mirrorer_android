@@ -1,0 +1,59 @@
+<com.videorecorder.widget.SurfaceViewLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/transparent" >
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/rl_pause"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/iv_frame"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY"
+            />
+        
+        <ImageView 
+            android:id="@+id/iv_toPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/prepareTimer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="80sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/delayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/margin_16"
+        android:background="@drawable/bg_delay"
+        android:drawableLeft="@drawable/bg_delay_selector"
+        android:gravity="center_vertical|center"
+        android:paddingLeft="@dimen/margin_8"
+        android:text="延时"
+        android:textColor="@drawable/bg_delay_fontcolor_selector"
+        android:visibility="gone" />
+
+</com.videorecorder.widget.SurfaceViewLayout>
